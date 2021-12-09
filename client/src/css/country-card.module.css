@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background: #fff;
+  box-shadow: 4px 4px 4px #34352a;
+}
+.card .cardImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.card .cardBody {
+  text-align: center;
+  margin-top: 0.8rem;
+}
+.card .cardBody .countryTitle {
+  font-weight: bold;
+  font-size: 1rem;
+}
+.card .cardBody .continent {
+  font-size: 0.7rem;
+}
+/*# sourceMappingURL=country-card.module.css.map */

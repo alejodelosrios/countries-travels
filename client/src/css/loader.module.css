@@ -1,0 +1,15 @@
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f00;
+}
+.loaderContainer .loader {
+  left: 50%;
+  top: 30%;
+  z-index: 1000;
+  position: absulute;
+}
+/*# sourceMappingURL=loader.module.css.map */

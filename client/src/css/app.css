@@ -1,0 +1,31 @@
+/* -------- Reset CSS ----- */
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 14px;
+  scroll-behavior: scroll;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #fff;
+  margin: 0;
+  overflow-x: hidden;
+  height: 100vh;
+}
+img {
+  max-width: 100%;
+  height: uto;
+}
+img h3 {
+  margin: 0;
+}
+img h3 #root {
+  display: flex;
+  flex-direction: column;
+  lign-items: center;
+}
+/*# sourceMappingURL=app.css.map */
