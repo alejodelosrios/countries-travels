@@ -1,13 +1,11 @@
 import React from "react";
-import styles from "../css/countries.module.css";
-import LoaderGif from "../assets/loader.gif";
+import styles from "../css/loader.module.css";
+import Logo from "../assets/Logo.png";
 
 const Loader = (props) => {
   return (
     <div className={styles.loaderContainer}>
-      <div className={styles.loader}>
-        <img src={LoaderGif} alt="" />
-      </div>
+      <img className={styles.logo} src={Logo} alt="" />
     </div>
   );
 };
