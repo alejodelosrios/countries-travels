@@ -12,15 +12,6 @@ const Countries = (props) => {
   //characters = filterCharacters;
   //}
 
-  //let countries = useSelector((state) => state.countries);
-  //let itemsperPage = useSelector((state) => state.itemsperPage);
-  //const current = countries.slice(0, 10);
-  //console.log(current);
-
-  //const dispatch = useDispatch();
-  //useEffect(() => {
-  //dispatch(set_current_items(current));
-  //}, [dispatch]);
   return (
     <div className={styles.countriesContainer}>
       {currentItems.length > 0 ? (
