@@ -48,7 +48,8 @@ function Pagination() {
   const handleInputChange = (e) => {
     setGo(e.target.value);
   };
-  const handleGoPage = () => {
+  const handleGoPage = (e) => {
+    e.preventDefault();
     dispatch(set_page_current_items(+go));
     setGo("");
   };
@@ -141,15 +142,15 @@ function Pagination() {
       <button value="next" onClick={() => nextPage()}>
         Next
       </button>
-      <div>
+      <form onSubmit={(e) => handleGoPage(e)}>
         <input
           type="number"
           name="go"
           value={go}
           onChange={(e) => handleInputChange(e)}
         />
-        <button onClick={() => handleGoPage()}>Go</button>
-      </div>
+        <button type="submit">Go</button>
+      </form>
     </nav>
   );
 }
