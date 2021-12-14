@@ -1,4 +1,5 @@
 import {
+  ORDER_COUNTRIES,
   GET_COUNTRIES,
   FILTER_COUNTRIES,
   SET_ITEMS_PER_PAGE,
@@ -6,6 +7,7 @@ import {
 } from "./actions";
 
 import { filter } from "./services/filter";
+import { order } from "./services/order";
 
 const initialState = {
   countries: [],
@@ -29,10 +31,20 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
     case FILTER_COUNTRIES: {
-      ///local
+      let filters = filter(state, payload);
       return {
         ...state,
-        filterCountries: filter(state, payload),
+        filterCountries: filters,
+        currentItems: filters.slice(0, state.itemsPerPage),
+      };
+    }
+    case ORDER_COUNTRIES: {
+      let ordered = order(state, payload);
+      return {
+        ...state,
+        countries: ordered,
+        currentItems: ordered.slice(0, state.itemsPerPage),
+        currentPage: 1,
       };
     }
     case SET_ITEMS_PER_PAGE: {

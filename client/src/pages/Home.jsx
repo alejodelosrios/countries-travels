@@ -2,21 +2,22 @@ import React from "react";
 import styles from "../css/home.module.css";
 import Countries from "../components/Countries";
 import Pagination from "../components/Pagination";
-//import { useDispatch } from "react-redux";
-//import { get_countries } from "../redux/actions";
+import ContinentsCheckbox from "../components/ContinentsCheckbox";
+import OrderBy from "../components/OrderBy";
 
 const Home = (props) => {
-    //const dispatch = useDispatch();
-    //useEffect(() => {
-    //setTimeout(() => {
-    //dispatch(get_countries());
-    //}, [3000, dispatch]);
-    //}, [dispatch]);
     return (
         <div className={styles.container}>
-            <h1>Home</h1>
-            <Pagination category="countries" />
-            <Countries />
+            <aside>
+                <ContinentsCheckbox />
+            </aside>
+            <main className={styles.content}>
+                <div className={styles.searchBar}>
+                    <OrderBy />
+                    <Pagination category="countries" />
+                </div>
+                <Countries />
+            </main>
         </div>
     );
 };

@@ -1,43 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "../css/pagination.module.css";
 import { set_page_current_items } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 
 function Pagination() {
+  let [go, setGo] = useState("");
   let state = useSelector((state) => state);
-  let { itemsPerPage, currentPage } = state;
-  console.log(currentPage);
+  let { itemsPerPage, currentPage, countries, filterCountries } = state;
+  //console.log(currentPage);
 
   // Calculo el número de paginas para el páginado, de acuerdo a
   // los itemsPerPage seleccionados
   let pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(state.countries.length / itemsPerPage); i++) {
-    pageNumbers.push(i);
+  if (filterCountries.length === 0) {
+    for (let i = 1; i <= Math.ceil(countries.length / itemsPerPage); i++) {
+      pageNumbers.push(i);
+    }
+  } else {
+    for (
+      let i = 1;
+      i <= Math.ceil(filterCountries.length / itemsPerPage);
+      i++
+    ) {
+      pageNumbers.push(i);
+    }
   }
   const dispatch = useDispatch();
   const changeCurrentPage = (e) => {
-    dispatch(set_page_current_items(e.target.value));
+    //console.log(+e.target.value);
+    dispatch(set_page_current_items(+e.target.value));
   };
   const prevPage = () => {
-    let number = +currentPage - 1;
+    let number = currentPage - 1;
     if (number < 1) {
       return null;
     }
     dispatch(set_page_current_items(number));
   };
   const nextPage = () => {
-    let number = +currentPage + 1;
+    let number = currentPage + 1;
     if (number > pageNumbers.length) {
       return null;
     }
     dispatch(set_page_current_items(+currentPage + 1));
   };
 
-  //else if (number === currentPage - 1 || number === currentPage + 1) {
-  //return <button key={number}>...</button>;
-  //}
+  const handleInputChange = (e) => {
+    setGo(e.target.value);
+  };
+  const handleGoPage = () => {
+    dispatch(set_page_current_items(+go));
+    setGo("");
+  };
 
   return (
-    <nav>
+    <nav className={styles.container}>
       <button value="prev" onClick={() => prevPage()}>
         Prev
       </button>
@@ -46,13 +63,13 @@ function Pagination() {
           number === 1 ||
           number === 2 ||
           number === 3 ||
-          number === currentPage ||
           number === pageNumbers.length - 2 ||
           number === pageNumbers.length - 1 ||
           number === pageNumbers.length
         ) {
           return (
             <button
+              className={number === currentPage ? styles.activeButton : ""}
               value={number}
               key={number}
               onClick={(e) => changeCurrentPage(e)}
@@ -62,17 +79,59 @@ function Pagination() {
           );
         } else if (
           number === currentPage &&
-          number > 3 &&
-          number < pageNumbers.length - 2
+          currentPage >= 5 &&
+          currentPage <= pageNumbers.length - 4
         ) {
           return (
-            <>
-              <button key="prevPoints">...</button>
-              <button value={number} onClick={(e) => changeCurrentPage(e)}>
+            <div key={number}>
+              <button>...</button>
+              <button
+                className={number === currentPage ? styles.activeButton : ""}
+                value={number}
+                onClick={(e) => changeCurrentPage(e)}
+              >
                 {number}
               </button>
-              <button key="nextPoints">...</button>
-            </>
+              <button>...</button>
+            </div>
+          );
+        } else if (number === currentPage && currentPage === 4) {
+          return (
+            <div key={number}>
+              <button
+                className={number === currentPage ? styles.activeButton : ""}
+                value={number}
+                onClick={(e) => changeCurrentPage(e)}
+              >
+                {number}
+              </button>
+              <button>...</button>
+            </div>
+          );
+        } else if (
+          number === currentPage &&
+          currentPage === pageNumbers.length - 3
+        ) {
+          return (
+            <div key={number}>
+              <button>...</button>
+              <button
+                className={number === currentPage ? styles.activeButton : ""}
+                value={number}
+                onClick={(e) => changeCurrentPage(e)}
+              >
+                {number}
+              </button>
+            </div>
+          );
+        } else if (
+          number === 4 &&
+          (currentPage <= 4 || currentPage >= pageNumbers.length - 2)
+        ) {
+          return (
+            <div key={number}>
+              <button>...</button>
+            </div>
           );
         } else {
           return null;
@@ -82,6 +141,15 @@ function Pagination() {
       <button value="next" onClick={() => nextPage()}>
         Next
       </button>
+      <div>
+        <input
+          type="number"
+          name="go"
+          value={go}
+          onChange={(e) => handleInputChange(e)}
+        />
+        <button onClick={() => handleGoPage()}>Go</button>
+      </div>
     </nav>
   );
 }
