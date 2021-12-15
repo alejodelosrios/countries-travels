@@ -1,0 +1,16 @@
+.container {
+  width: 100%;
+}
+.container form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container form input {
+  width: 70%;
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  margin: 1rem 0;
+}
+/*# sourceMappingURL=search-bar.module.css.map */
