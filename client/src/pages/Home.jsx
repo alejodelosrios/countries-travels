@@ -4,6 +4,7 @@ import Countries from "../components/Countries";
 import Pagination from "../components/Pagination";
 import ContinentsCheckbox from "../components/ContinentsCheckbox";
 import OrderBy from "../components/OrderBy";
+import SearchBar from "../components/SearchBar";
 
 const Home = (props) => {
     return (
@@ -12,9 +13,11 @@ const Home = (props) => {
                 <ContinentsCheckbox />
             </aside>
             <main className={styles.content}>
-                <div className={styles.searchBar}>
-                    <OrderBy />
+                <SearchBar />
+                <div className={styles.orderBar}>
+                    <div className={styles.empty}></div>
                     <Pagination category="countries" />
+                    <OrderBy />
                 </div>
                 <Countries />
             </main>

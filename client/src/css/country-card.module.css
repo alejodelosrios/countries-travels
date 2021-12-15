@@ -7,7 +7,7 @@
   height: 150px;
   border-radius: 100%;
   background: #fff;
-  box-shadow: 4px 4px 4px #34352a;
+  box-shadow: rgba(17,17,26,0.1) 0px 8px 24px, rgba(17,17,26,0.1) 0px 16px 56px, rgba(17,17,26,0.1) 0px 24px 80px;
 }
 .card .cardImg {
   width: 50px;

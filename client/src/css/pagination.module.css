@@ -1,11 +1,16 @@
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 60%;
+  gap: 0.3rem;
+  width: 50%;
+}
+.container input {
+  width: 2.5rem;
+  margin-right: 0.3rem;
 }
 .activeButton {
-  background-color: #1a1b1f;
+  background-color: #002448;
   color: #fff;
 }
 /* Chrome, Safari, Edge, Opera */

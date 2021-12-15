@@ -3,25 +3,28 @@
 .container
     display: flex
     width: 100%
-    margin-left: auto
-    margin-right: auto
-    @media screen and (min-width: 640px)
-        max-width: 640px
-    @media screen and (min-width: 768px)
-        max-width: 768px
-    @media screen and (min-width: 1024px)
-        max-width: 1024px
-    @media screen and (min-width: 1280px)
-        max-width: 1280px
-    @media screen and (min-width: 1280px)
-        max-width: 1280px
-    @media screen and (min-width: 1536px)
-        max-width: 1536px
     aside
-        30vw
+        width:15%
+        height: 100vh
+        background-color:base-color
     .content
-        70vw
-        .searchBar
+        width:85%
+        margin-left: auto
+        margin-right: auto
+        @media screen and (min-width: 640px)
+            max-width: 580px
+        @media screen and (min-width: 768px)
+            max-width: 640px
+        @media screen and (min-width: 1024px)
+            max-width: 768px
+        @media screen and (min-width: 1280px)
+            max-width: 1024px
+        @media screen and (min-width: 1536px)
+            max-width: 1280px
+        .orderBar
             display: flex
             justify-content: space-between
             align-items: center
+            padding: 1rem 0
+            .empty
+                width: 20%
