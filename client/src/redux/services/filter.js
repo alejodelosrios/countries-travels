@@ -1,48 +1,28 @@
-export const filter = (state, payload) => {
+export const filter = (state, payload, filterType) => {
     let filterItems;
-    if (state.filterCountries.length > 0) {
-        filterItems = state.filterCountries;
+    // payload.byName
+    if (state.currentCountries.length > 0) {
+        filterItems = state.currentCountries;
     } else {
         filterItems = state.countries;
     }
 
-    if (payload.orderBy) {
-        if (payload.orderBy === "asc") {
-            filterItems = filterItems.sort((a, b) => {
-                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
-        } else if (payload.orderBy === "dsc") {
-            filterItems = filterItems.sort((a, b) => {
-                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                if (nameA > nameB) {
-                    return -1;
-                }
-                if (nameA < nameB) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
-        } else if (payload.orderBy === "hp") {
-            filterItems = filterItems.sort(
-                (a, b) => b.population - a.population
-            );
+    if (payload[filterType].length > 0 || payload[filterType] === undefined) {
+        if (
+            payload[filterType].length < 1 ||
+            payload[filterType] === undefined
+        ) {
+            filterItems = state.countries;
         } else {
-            filterItems = filterItems.sort(
-                (a, b) => a.population - b.population
+            filterItems = state.countries.filter(
+                (e) =>
+                    e.name
+                        .toLowerCase()
+                        .search(payload[filterType].toLowerCase()) >= 0
             );
         }
     }
+
     return filterItems;
 };
 //if (payload.byName && payload.byGender) {

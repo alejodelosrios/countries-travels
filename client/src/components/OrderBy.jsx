@@ -6,7 +6,7 @@ import { order_countries } from "../redux/actions";
 const OrderBy = () => {
   const dispatch = useDispatch();
   const handleOrderByFilter = (e) => {
-    dispatch(order_countries({ orderBy: e.target.value }));
+    dispatch(order_countries(e.target.value));
   };
   return (
     <div className={styles.container}>

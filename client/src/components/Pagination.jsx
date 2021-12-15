@@ -6,20 +6,20 @@ import { useSelector, useDispatch } from "react-redux";
 function Pagination() {
   let [go, setGo] = useState("");
   let state = useSelector((state) => state);
-  let { itemsPerPage, currentPage, countries, filterCountries } = state;
+  let { itemsPerPage, currentPage, countries, currentCountries } = state;
   //console.log(currentPage);
 
   // Calculo el número de paginas para el páginado, de acuerdo a
   // los itemsPerPage seleccionados
   let pageNumbers = [];
-  if (filterCountries.length === 0) {
+  if (currentCountries.length === 0) {
     for (let i = 1; i <= Math.ceil(countries.length / itemsPerPage); i++) {
       pageNumbers.push(i);
     }
   } else {
     for (
       let i = 1;
-      i <= Math.ceil(filterCountries.length / itemsPerPage);
+      i <= Math.ceil(currentCountries.length / itemsPerPage);
       i++
     ) {
       pageNumbers.push(i);
@@ -145,6 +145,8 @@ function Pagination() {
       <form onSubmit={(e) => handleGoPage(e)}>
         <input
           type="number"
+          min="1"
+          max={pageNumbers.length}
           name="go"
           value={go}
           onChange={(e) => handleInputChange(e)}

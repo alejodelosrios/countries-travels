@@ -6,16 +6,21 @@ import {
   SET_PAGE_CURRENT_ITEMS,
 } from "./actions";
 
-import { filter } from "./services/filter";
-import { order } from "./services/order";
+import { handleCurrentCountries } from "./services/handleCurrentCountries";
 
 const initialState = {
   countries: [],
-  filterCountries: [],
+  currentCountries: [],
+  filterCountries: {
+    byName: "",
+    continentsFilter: [],
+  },
+  orderBy: "",
   currentPage: 1,
   itemsPerPage: 10,
   currentItems: [],
   continents: [],
+  loading: true,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -27,22 +32,28 @@ const rootReducer = (state = initialState, { type, payload }) => {
           ...new Set(Array.from(payload, ({ continent }) => continent)),
         ],
         countries: payload,
+        currentCountries: payload,
         currentItems: payload.slice(0, state.itemsPerPage),
+        loading: false,
       };
     }
     case FILTER_COUNTRIES: {
-      let filters = filter(state, payload);
+      let filtered = handleCurrentCountries(state, payload);
+
       return {
         ...state,
-        filterCountries: filters,
-        currentItems: filters.slice(0, state.itemsPerPage),
+        filterCountries: payload,
+        currentCountries: filtered,
+        currentItems: filtered.slice(0, state.itemsPerPage),
+        currentPage: 1,
       };
     }
     case ORDER_COUNTRIES: {
-      let ordered = order(state, payload);
+      let ordered = handleCurrentCountries(state, payload);
       return {
         ...state,
-        countries: ordered,
+        orderBy: payload,
+        currentCountries: ordered,
         currentItems: ordered.slice(0, state.itemsPerPage),
         currentPage: 1,
       };

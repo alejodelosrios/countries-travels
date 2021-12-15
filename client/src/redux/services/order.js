@@ -1,42 +1,44 @@
-export const order = (state, payload) => {
-    let orderedItems = state.countries;
+export const order = (state, payload, array) => {
+    let orderItems;
+    let validator;
 
-    if (payload.orderBy) {
-        if (payload.orderBy === "asc") {
-            orderedItems = orderedItems.sort((a, b) => {
-                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
-        } else if (payload.orderBy === "dsc") {
-            orderedItems = orderedItems.sort((a, b) => {
-                var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-                var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-                if (nameA > nameB) {
-                    return -1;
-                }
-                if (nameA < nameB) {
-                    return 1;
-                }
-                // names must be equal
-                return 0;
-            });
-        } else if (payload.orderBy === "hp") {
-            orderedItems = orderedItems.sort(
-                (a, b) => b.population - a.population
-            );
-        } else {
-            orderedItems = orderedItems.sort(
-                (a, b) => a.population - b.population
-            );
-        }
+    if (payload) {
+        validator = payload;
+    } else {
+        validator = state.orderBy;
     }
-    return orderedItems;
+
+    if (validator === "asc") {
+        orderItems = array.sort((a, b) => {
+            var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        });
+    } else if (validator === "dsc") {
+        orderItems = array.sort((a, b) => {
+            var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA > nameB) {
+                return -1;
+            }
+            if (nameA < nameB) {
+                return 1;
+            }
+            // names must be equal
+            return 0;
+        });
+    } else if (validator === "hp") {
+        orderItems = array.sort((b, a) => a.population - b.population);
+    } else if (validator === "sp") {
+        orderItems = array.sort((b, a) => b.population - a.population);
+    }
+
+    return orderItems;
 };

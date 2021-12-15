@@ -6,6 +6,7 @@ import Loader from "../pages/Loader";
 
 const Countries = (props) => {
   let currentItems = useSelector((state) => state.currentItems);
+  let loading = useSelector((state) => state.loading);
 
   //let filterCharacters = useSelector((state) => state.filterCharacters);
   //if (filterCharacters.length > 0) {
@@ -14,7 +15,9 @@ const Countries = (props) => {
 
   return (
     <div className={styles.countriesContainer}>
-      {currentItems.length > 0 ? (
+      {loading === true ? (
+        <Loader />
+      ) : currentItems.length > 0 ? (
         currentItems.map((country) => (
           <CountryCard
             key={country.id}
@@ -25,7 +28,7 @@ const Countries = (props) => {
           />
         ))
       ) : (
-        <Loader />
+        <p>There are not countries for this search</p>
       )}
     </div>
   );
