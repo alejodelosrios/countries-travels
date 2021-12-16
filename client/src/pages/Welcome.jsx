@@ -9,7 +9,7 @@ const Welcome = (props) => {
     <div className={styles.container}>
       <img className={styles.logo} src={Logo} alt="site logo" />
       <Link to="/home">
-        <PrimaryButton name="Enter" />
+        <PrimaryButton name="Click me" />
       </Link>
     </div>
   );
