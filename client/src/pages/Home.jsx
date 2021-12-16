@@ -20,6 +20,9 @@ const Home = (props) => {
                     <OrderBy />
                 </div>
                 <Countries />
+                <div className={styles.credits}>
+                    <p>Made with ❤️ by Manuel A Ramirez</p>
+                </div>
             </main>
         </div>
     );
