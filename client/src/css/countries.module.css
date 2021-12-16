@@ -3,5 +3,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  flex: 2;
 }
 /*# sourceMappingURL=countries.module.css.map */
