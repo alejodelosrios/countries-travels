@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import Loader from "../pages/Loader";
 
 const Countries = (props) => {
-  let countries = useSelector((state) => state.countries);
+  let currentItems = useSelector((state) => state.currentItems);
+  let loading = useSelector((state) => state.loading);
+
   //let filterCharacters = useSelector((state) => state.filterCharacters);
   //if (filterCharacters.length > 0) {
   //characters = filterCharacters;
@@ -13,19 +15,21 @@ const Countries = (props) => {
 
   return (
     <div className={styles.countriesContainer}>
-      {countries.length > 0
-        ? countries.map((country) => (
-            <CountryCard
-              key={country.id}
-              id={country.id}
-              name={country.name}
-              continent={country.continent}
-              flag={country.flag}
-            />
-          ))
-        : setTimeout(() => {
-            <Loader />;
-          }, 10000)}
+      {loading === true ? (
+        <Loader />
+      ) : currentItems.length > 0 ? (
+        currentItems.map((country) => (
+          <CountryCard
+            key={country.id}
+            id={country.id}
+            name={country.name}
+            continent={country.continent}
+            flag={country.flag}
+          />
+        ))
+      ) : (
+        <p>There are not countries for this search</p>
+      )}
     </div>
   );
 };

@@ -1,4 +1,21 @@
-.main-container {
-  background: #808080;
+.container {
+  width: 100vw;
+  height: 100vh;
+/* The image used */
+  background-image: url("../assets/welcome-bg.jpg");
+/* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #002448;
+}
+.container .logo {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 3rem;
 }
 /*# sourceMappingURL=welcome.module.css.map */

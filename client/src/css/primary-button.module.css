@@ -1,6 +1,62 @@
-.primary {
-  background: #000;
-  color: #fff;
-  border-radius: 5px;
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.cta {
+  position: relative;
+  font-family: Avenir, sans-serif;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all 0.2s ease;
+}
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: rgba(0,36,72,0.5);
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #002448;
+  stroke-width: 2;
+  -webkit-transform: translateX(-5px);
+          transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+.cta:hover:before {
+  width: 100%;
+  background: #002448;
+}
+.cta:hover span {
+  color: #f0f1f5;
+}
+.cta:hover svg {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  stroke: #f0f1f5;
+}
+.cta:active {
+  -webkit-transform: scale(0.96);
+          transform: scale(0.96);
 }
 /*# sourceMappingURL=primary-button.module.css.map */

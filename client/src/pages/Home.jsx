@@ -1,20 +1,31 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "../css/home.module.css";
 import Countries from "../components/Countries";
-import { useDispatch } from "react-redux";
-import { get_countries } from "../redux/actions";
+import Pagination from "../components/Pagination";
+import ContinentsCheckbox from "../components/ContinentsCheckbox";
+import OrderBy from "../components/OrderBy";
+import SearchBar from "../components/SearchBar";
 
 const Home = (props) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(get_countries());
-  }, [dispatch]);
-  return (
-    <div className={styles.container}>
-      <h1>Home</h1>
-      <Countries />
-    </div>
-  );
+    return (
+        <div className={styles.container}>
+            <aside>
+                <ContinentsCheckbox />
+            </aside>
+            <main className={styles.content}>
+                <SearchBar />
+                <div className={styles.orderBar}>
+                    <div className={styles.empty}></div>
+                    <Pagination category="countries" />
+                    <OrderBy />
+                </div>
+                <Countries />
+                <div className={styles.credits}>
+                    <p>Made with ❤️ by Manuel A Ramirez</p>
+                </div>
+            </main>
+        </div>
+    );
 };
 
 export default Home;
