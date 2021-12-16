@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "../css/pagination.module.css";
 import { set_page_current_items } from "../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
+import Left from "../assets/left-arrow.svg";
+import Right from "../assets/right-arrow.svg";
 
 function Pagination() {
   let [go, setGo] = useState("");
@@ -56,8 +58,12 @@ function Pagination() {
 
   return (
     <nav className={styles.container}>
-      <button value="prev" onClick={() => prevPage()}>
-        Prev
+      <button
+        value="prev"
+        className={styles.arrowButton}
+        onClick={() => prevPage()}
+      >
+        <img src={Left} alt="left arrow" />
       </button>
       {pageNumbers.map((number) => {
         if (
@@ -70,8 +76,8 @@ function Pagination() {
         ) {
           return (
             <button
-              className={number === currentPage ? styles.activeButton : ""}
               value={number}
+              className={number === currentPage ? styles.activeButton : ""}
               key={number}
               onClick={(e) => changeCurrentPage(e)}
             >
@@ -139,8 +145,12 @@ function Pagination() {
         }
       })}
 
-      <button value="next" onClick={() => nextPage()}>
-        Next
+      <button
+        value="next"
+        className={styles.arrowButton}
+        onClick={() => nextPage()}
+      >
+        <img src={Right} alt="right arrow" />
       </button>
       <form onSubmit={(e) => handleGoPage(e)}>
         <input

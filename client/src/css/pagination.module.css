@@ -9,9 +9,25 @@
   width: 2.5rem;
   margin-right: 0.3rem;
 }
+.container button {
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  border: none;
+  color: #002448;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 .activeButton {
-  background-color: #002448;
-  color: #fff;
+  border-radius: 100%;
+  background-color: #002448 !important;
+  color: #fff !important;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
