@@ -1,17 +1,37 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import styles from "../css/continents-checkbox.module.css";
+import { filter_countries } from "../redux/actions";
 
 const ContinentsCheckbox = () => {
   let continents = useSelector((state) => state.continents);
+  let filterCountries = useSelector((state) => state.filterCountries);
+  const dispatch = useDispatch();
+
+  const handleCheckbox = (e) => {
+    console.log(e.target)
+    let obj = {
+      ...filterCountries,
+        byContinent: e.target.value
+    };
+    dispatch(filter_countries(obj));
+  };
   return (
-    <div>
+    <form className={styles.container}>
       {continents.map((continent, index) => (
-        <div key={index}>
+        <div className={styles.checkbox} key={index}>
+          <input
+            type="radio"
+            className={styles.hidden}
+            name="continent"
+            value={continent}
+            id={continent}
+            onChange={(e) => handleCheckbox(e)}
+          />
           <label htmlFor={continent}>{continent}</label>
-          <input type="checkbox" name={continent} value={continent} />
         </div>
       ))}
-    </div>
+    </form>
   );
 };
 

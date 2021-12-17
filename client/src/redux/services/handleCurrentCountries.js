@@ -1,31 +1,43 @@
-import { filter } from "./filter";
-import { order } from "./order";
+import {filterByName} from "./filterByName";
+import {filterByContinent} from "./filterByContinent";
+import {order} from "./order";
 
 export const handleCurrentCountries = (state, payload) => {
-    let currentCountries = state.currentCountries;
+    let currentCountries = state.countries;
     if (typeof payload === "object") {
-        if (payload.byName !== "" && state.orderBy.length > 0) {
-            currentCountries = filter(state, payload, "byName");
-            currentCountries = order(state, state.orderBy, currentCountries);
-            return currentCountries;
-        } else {
-            currentCountries = filter(state, payload, "byName");
-            return currentCountries;
+        // Filtra cuando hay un ordenamiento guardado
+        for (let prop in payload) {
+            if (prop == "byName") {
+                currentCountries = filterByName(state, payload[prop], currentCountries);
+            }
+            if (prop == "byContinent") {
+                currentCountries = filterByContinent(state, payload[prop], currentCountries);
+            }
         }
+        if(state.orderBy.length >0){
+            currentCountries = order(state, payload, currentCountries);
+        }
+        return currentCountries;
     }
 
     if (
-        state.orderBy.length > 0 ||
         payload === "asc" ||
         payload === "dsc" ||
         payload === "hp" ||
         payload === "sp"
     ) {
-        currentCountries = order(state, payload, state.currentCountries);
+        for (let prop in state.filterCountries) {
+            if (prop === "byName" && state.filterCountries[prop].length >0) {
+                currentCountries = filterByName(state, state.filterCountries[prop], currentCountries);
+                console.log("entro byname", currentCountries)
+            }
+            if (prop === "byContinent" && state.filterCountries[prop].length >0) {
+                currentCountries = filterByContinent(state, state.filterCountries[prop], currentCountries);
+                console.log("entro continent", currentCountries)
+            }
+        }
+        currentCountries = order(state, payload, currentCountries);
+        console.log("entro order", currentCountries)
         return currentCountries;
     }
-    // currentCountries = filter(state,payload);
-    // currentCountries = order(state);
-
-    //return currentCountries;
 };

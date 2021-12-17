@@ -6,14 +6,14 @@ import {
   SET_PAGE_CURRENT_ITEMS,
 } from "./actions";
 
-import { handleCurrentCountries } from "./services/handleCurrentCountries";
+import {handleCurrentCountries} from "./services/handleCurrentCountries";
 
 const initialState = {
   countries: [],
   currentCountries: [],
   filterCountries: {
     byName: "",
-    continentsFilter: [],
+    byContinent: "",
   },
   orderBy: "",
   currentPage: 1,
@@ -23,13 +23,13 @@ const initialState = {
   loading: true,
 };
 
-const rootReducer = (state = initialState, { type, payload }) => {
+const rootReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case GET_COUNTRIES: {
       return {
         ...state,
         continents: [
-          ...new Set(Array.from(payload, ({ continent }) => continent)),
+          ...new Set(Array.from(payload, ({continent}) => continent)),
         ],
         countries: payload,
         currentCountries: payload,

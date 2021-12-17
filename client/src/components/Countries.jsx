@@ -8,11 +8,6 @@ const Countries = (props) => {
   let currentItems = useSelector((state) => state.currentItems);
   let loading = useSelector((state) => state.loading);
 
-  //let filterCharacters = useSelector((state) => state.filterCharacters);
-  //if (filterCharacters.length > 0) {
-  //characters = filterCharacters;
-  //}
-
   return (
     <div className={styles.countriesContainer}>
       {loading === true ? (
