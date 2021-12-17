@@ -2,13 +2,16 @@ const { Activity, Country } = require("../db/models");
 const axios = require("axios");
 
 async function getDbCountries() {
-  let countries = await Country.findAll({
-    attributes: ["id", "name", "flag", "continent"],
+  let countries = await Country
+    .findAll
+    //{
+    //attributes: ["id", "name", "flag", "continent"],
     //include: {
     //model: Activity,
     //attributes: ["name", "difficulty", "duration", "season"],
     //},
-  });
+    //}
+    ();
   return countries;
 }
 
