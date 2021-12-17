@@ -1,16 +1,31 @@
 .container {
-  width: 100%;
-}
-.container form {
-  width: 100%;
+  width: 70%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .container form input {
-  width: 70%;
-  border-radius: 0.5rem;
-  padding: 0.2rem 0.5rem;
+  width: 30vw;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
   margin: 1rem 0;
+  border: 1px solid;
+  border-color: #808080;
+}
+.container .search {
+  width: 2rem;
+  height: 2rem;
+  background-color: #002448;
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  color: #f0f1f5;
+  position: relative;
+  right: 2.4rem;
+  top: 0.12rem;
 }
 /*# sourceMappingURL=search-bar.module.css.map */

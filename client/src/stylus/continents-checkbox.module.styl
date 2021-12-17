@@ -1,0 +1,23 @@
+@import "./variables.styl"
+
+.container
+  width:100%
+  display:flex
+  flex-direction:column
+  align-items:center
+  gap: 1.5rem
+  .checkbox
+    width: 100%
+    .hidden
+        position:absolute
+        visibility: hidden
+        opacity: 0
+
+    input[type=radio]+label
+      color: main color
+      width: 100%
+
+    input[type=radio]:checked+label
+      width: 100%
+      color: base-color
+      background-color: main-color

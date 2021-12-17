@@ -7,6 +7,15 @@
   width: 15%;
   height: inherit;
   background-color: #e3e7e8;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+.container aside h3 {
+  color: #002448;
 }
 .container .content {
   width: 85%;
