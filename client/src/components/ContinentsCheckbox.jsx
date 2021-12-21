@@ -5,32 +5,44 @@ import { filter_countries } from "../redux/actions";
 
 const ContinentsCheckbox = () => {
   let continents = useSelector((state) => state.continents);
-  let filterCountries = useSelector((state) => state.filterCountries);
+  let filtering_and_ordering = useSelector(
+    (state) => state.filtering_and_ordering
+  );
   const dispatch = useDispatch();
 
   const handleCheckbox = (e) => {
-    console.log(e.target)
     let obj = {
-      ...filterCountries,
-        byContinent: e.target.value
+      ...filtering_and_ordering,
+      byContinent: e.target.value,
     };
     dispatch(filter_countries(obj));
   };
   return (
     <form className={styles.container}>
-      {continents.map((continent, index) => (
-        <div className={styles.checkbox} key={index}>
-          <input
-            type="radio"
-            className={styles.hidden}
-            name="continent"
-            value={continent}
-            id={continent}
-            onChange={(e) => handleCheckbox(e)}
-          />
-          <label htmlFor={continent}>{continent}</label>
-        </div>
-      ))}
+      <div className={styles.checkbox}>
+        <input
+          type="radio"
+          className={styles.hidden}
+          name="continent"
+          value="all"
+          id="all"
+          onChange={(e) => handleCheckbox(e)}
+        />
+        <label htmlFor="all">All</label>
+        {continents.map((continent, index) => (
+          <div key={index}>
+            <input
+              type="radio"
+              className={styles.hidden}
+              name="continent"
+              value={continent}
+              id={continent}
+              onChange={(e) => handleCheckbox(e)}
+            />
+            <label htmlFor={continent}>{continent}</label>
+          </div>
+        ))}
+      </div>
     </form>
   );
 };

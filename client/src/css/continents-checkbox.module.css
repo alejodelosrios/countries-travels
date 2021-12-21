@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
 .container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.1rem;
 }
 .container .checkbox {
   width: 100%;
@@ -12,10 +13,20 @@
   position: absolute;
   visibility: hidden;
   opacity: 0;
+  width: 100%;
 }
 .container .checkbox input[type=radio]+label {
+  display: inline-block;
   color: main color;
   width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+.container .checkbox input[type=radio]+label:hover {
+  color: #002448;
+  border: 0.7px solid;
+  border-color: #002448;
 }
 .container .checkbox input[type=radio]:checked+label {
   width: 100%;
