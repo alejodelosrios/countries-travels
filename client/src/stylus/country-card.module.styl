@@ -5,16 +5,31 @@
     flex-direction:column
     align-items:center
     justify-content:center
+    padding: 0.5 rem
     width: 150px
     height:150px
     border-radius: 100%
     background: white
     box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    &:hover
+        transition: all 1s
+        background: main-color
+        .cardImg
+            transition: all 1s
+            transform: rotateY(360deg)
+        .cardBody
+            .countryTitle
+                transition: all 1s
+                color: third-color
+            .continent
+                transition: all 1s
+                color: white
     .cardImg
         width:50px
         height:50px
         clip-path: circle();
     .cardBody
+        font-family: main-font
         text-align: center
         margin-top: 0.8rem
         .countryTitle

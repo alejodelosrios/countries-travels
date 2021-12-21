@@ -5,17 +5,26 @@
   display:flex
   flex-direction:column
   align-items:center
-  gap: 1.5rem
+  gap: 0.1rem
   .checkbox
     width: 100%
     .hidden
         position:absolute
         visibility: hidden
         opacity: 0
+        width:100%
 
     input[type=radio]+label
+      display: inline-block
       color: main color
       width: 100%
+      border-radius: 0.5rem
+      padding: 0.5rem
+      transition: all 0.3s
+      &:hover
+        color: main-color
+        border: 0.7px solid
+        border-color: main-color
 
     input[type=radio]:checked+label
       width: 100%

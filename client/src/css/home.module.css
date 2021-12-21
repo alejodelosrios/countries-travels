@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
 .container {
   display: flex;
   width: 100%;
@@ -39,8 +40,20 @@
   padding: 1rem 0;
   height: 10vh;
 }
-.container .content .orderBar .empty {
-  width: 20%;
+.container .content .orderBar .itemsPerPage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.container .content .orderBar .itemsPerPage select {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid;
+  background: #fff;
 }
 .container .content .credits {
   width: 100%;

@@ -1,13 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
   width: 150px;
   height: 150px;
   border-radius: 100%;
   background: #fff;
   box-shadow: rgba(17,17,26,0.1) 0px 8px 24px, rgba(17,17,26,0.1) 0px 16px 56px, rgba(17,17,26,0.1) 0px 24px 80px;
+}
+.card:hover {
+  transition: all 1s;
+  background: #002448;
+}
+.card:hover .cardImg {
+  transition: all 1s;
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+}
+.card:hover .cardBody .countryTitle {
+  transition: all 1s;
+  color: #ffc68d;
+}
+.card:hover .cardBody .continent {
+  transition: all 1s;
+  color: #fff;
 }
 .card .cardImg {
   width: 50px;
@@ -16,6 +35,7 @@
           clip-path: circle();
 }
 .card .cardBody {
+  font-family: 'Signika Negative', sans-serif;
   text-align: center;
   margin-top: 0.8rem;
 }
