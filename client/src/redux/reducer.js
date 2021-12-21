@@ -4,18 +4,20 @@ import {
   FILTER_COUNTRIES,
   SET_ITEMS_PER_PAGE,
   SET_PAGE_CURRENT_ITEMS,
+  SAVE_ACTIVITY,
 } from "./actions";
 
-import {handleCurrentCountries} from "./services/handleCurrentCountries";
+import { handleCurrentCountries } from "./services/handleCurrentCountries";
 
 const initialState = {
+  activities: [],
   countries: [],
   currentCountries: [],
-  filterCountries: {
+  filtering_and_ordering: {
     byName: "",
     byContinent: "",
+    orderBy: "",
   },
-  orderBy: "",
   currentPage: 1,
   itemsPerPage: 10,
   currentItems: [],
@@ -23,13 +25,13 @@ const initialState = {
   loading: true,
 };
 
-const rootReducer = (state = initialState, {type, payload}) => {
+const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_COUNTRIES: {
       return {
         ...state,
         continents: [
-          ...new Set(Array.from(payload, ({continent}) => continent)),
+          ...new Set(Array.from(payload, ({ continent }) => continent)),
         ],
         countries: payload,
         currentCountries: payload,
@@ -37,22 +39,28 @@ const rootReducer = (state = initialState, {type, payload}) => {
         loading: false,
       };
     }
+    case SAVE_ACTIVITY: {
+      return {
+        ...state,
+        activities: Array.from(payload.activities, ({ name }) => name),
+      };
+    }
     case FILTER_COUNTRIES: {
-      let filtered = handleCurrentCountries(state, payload);
+      let filtered = handleCurrentCountries(state.countries, payload);
 
       return {
         ...state,
-        filterCountries: payload,
+        filtering_and_ordering: payload,
         currentCountries: filtered,
         currentItems: filtered.slice(0, state.itemsPerPage),
         currentPage: 1,
       };
     }
     case ORDER_COUNTRIES: {
-      let ordered = handleCurrentCountries(state, payload);
+      let ordered = handleCurrentCountries(state.countries, payload);
       return {
         ...state,
-        orderBy: payload,
+        filtering_and_ordering: payload,
         currentCountries: ordered,
         currentItems: ordered.slice(0, state.itemsPerPage),
         currentPage: 1,
@@ -61,14 +69,15 @@ const rootReducer = (state = initialState, {type, payload}) => {
     case SET_ITEMS_PER_PAGE: {
       return {
         ...state,
-        itemsPerPage: payload,
+        itemsPerPage: +payload,
+        currentItems: state.currentCountries.slice(0, +payload),
       };
     }
     case SET_PAGE_CURRENT_ITEMS: {
       let currentPage = payload;
       let indexOfLastItem = currentPage * state.itemsPerPage;
       let indexOfFirstItem = indexOfLastItem - state.itemsPerPage;
-      let currentItems = state.countries.slice(
+      let currentItems = state.currentCountries.slice(
         indexOfFirstItem,
         indexOfLastItem
       );

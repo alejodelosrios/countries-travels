@@ -1,6 +1,7 @@
-export const filterByContinent = (state, filterBy, array) => {
-    let filterItems;
-
-    filterItems = array.filter((e) => e.continent === filterBy);
-    return filterItems;
-}
+export const filterByContinent = (array, continent) => {
+    // Filtra por continente
+    if (continent !== "all") {
+        array = array.filter((e) => e.continent === continent);
+    }
+    return array;
+};

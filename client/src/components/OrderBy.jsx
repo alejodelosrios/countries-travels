@@ -1,12 +1,20 @@
 import React from "react";
 import styles from "../css/order-by.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { order_countries } from "../redux/actions";
 
 const OrderBy = () => {
   const dispatch = useDispatch();
+  let filtering_and_ordering = useSelector(
+    (state) => state.filtering_and_ordering
+  );
+
   const handleOrderByFilter = (e) => {
-    dispatch(order_countries(e.target.value));
+    let obj = {
+      ...filtering_and_ordering,
+      orderBy: e.target.value,
+    };
+    dispatch(order_countries(obj));
   };
   return (
     <div className={styles.container}>
@@ -15,10 +23,9 @@ const OrderBy = () => {
         id="orderBy"
         onChange={(e) => handleOrderByFilter(e)}
         name="orderBy"
+        defaultValue={filtering_and_ordering.orderBy}
       >
-        <option value="asc" select="true">
-          Select...
-        </option>
+        <option value="asc">Select...</option>
         <option value="asc">From A-Z</option>
         <option value="dsc">From Z-A</option>
         <option value="hp">Higher population</option>

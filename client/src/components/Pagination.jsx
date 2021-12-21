@@ -8,16 +8,13 @@ import Right from "../assets/right-arrow.svg";
 function Pagination() {
   let [go, setGo] = useState("");
   let state = useSelector((state) => state);
-  let { itemsPerPage, currentPage, countries, currentCountries } = state;
-  //console.log(currentPage);
+  let { itemsPerPage, currentPage, currentCountries } = state;
 
   // Calculo el número de paginas para el páginado, de acuerdo a
   // los itemsPerPage seleccionados
   let pageNumbers = [];
-  if (currentCountries.length === 0) {
-    for (let i = 1; i <= Math.ceil(countries.length / itemsPerPage); i++) {
-      pageNumbers.push(i);
-    }
+  if (currentCountries.length <= itemsPerPage) {
+    pageNumbers.push(1);
   } else {
     for (
       let i = 1;

@@ -2,20 +2,20 @@ import React from "react";
 import styles from "../css/search-bar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { filter_countries } from "../redux/actions";
-import Search from "../assets/search.svg";
 
 const SearchBar = () => {
-  let filterCountries = useSelector((state) => state.filterCountries);
   const dispatch = useDispatch();
+  let filtering_and_ordering = useSelector(
+    (state) => state.filtering_and_ordering
+  );
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    let obj = { ...filterCountries, byName: e.target.value };
+    let obj = { ...filtering_and_ordering, byName: e.target.value };
     dispatch(filter_countries(obj));
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(filter_countries(e.target.value));
   };
 
   return (

@@ -1,15 +1,6 @@
-export const order = (state, payload, array) => {
-    let orderItems;
-    let validator;
-
-    if (payload) {
-        validator = payload;
-    } else {
-        validator = state.orderBy;
-    }
-
-    if (validator === "asc") {
-        orderItems = array.sort((a, b) => {
+export const order = (array, orderBy) => {
+    if (orderBy === "asc") {
+        array = array.sort((a, b) => {
             var nameA = a.name.toUpperCase(); // ignore upper and lowercase
             var nameB = b.name.toUpperCase(); // ignore upper and lowercase
             if (nameA < nameB) {
@@ -21,8 +12,8 @@ export const order = (state, payload, array) => {
             // names must be equal
             return 0;
         });
-    } else if (validator === "dsc") {
-        orderItems = array.sort((a, b) => {
+    } else if (orderBy === "dsc") {
+        array = array.sort((a, b) => {
             var nameA = a.name.toUpperCase(); // ignore upper and lowercase
             var nameB = b.name.toUpperCase(); // ignore upper and lowercase
             if (nameA > nameB) {
@@ -34,11 +25,11 @@ export const order = (state, payload, array) => {
             // names must be equal
             return 0;
         });
-    } else if (validator === "hp") {
-        orderItems = array.sort((b, a) => a.population - b.population);
-    } else if (validator === "sp") {
-        orderItems = array.sort((b, a) => b.population - a.population);
+    } else if (orderBy === "hp") {
+        array = array.sort((b, a) => a.population - b.population);
+    } else if (orderBy === "sp") {
+        array = array.sort((b, a) => b.population - a.population);
     }
 
-    return orderItems;
+    return array;
 };
