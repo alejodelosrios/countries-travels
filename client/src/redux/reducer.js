@@ -5,17 +5,19 @@ import {
   SET_ITEMS_PER_PAGE,
   SET_PAGE_CURRENT_ITEMS,
   SAVE_ACTIVITY,
+  SEARCH_COUNTRIES,
 } from "./actions";
 
 import { handleCurrentCountries } from "./services/handleCurrentCountries";
+import { filterByName } from "./services/filterByName";
 
 const initialState = {
-  activities: [],
   countries: [],
   currentCountries: [],
+  searchCountries: [],
   filtering_and_ordering: {
     byName: "",
-    byContinent: "",
+    byContinent: "all",
     orderBy: "",
   },
   currentPage: 1,
@@ -35,6 +37,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ],
         countries: payload,
         currentCountries: payload,
+        searchCountries: payload,
         currentItems: payload.slice(0, state.itemsPerPage),
         loading: false,
       };
@@ -42,7 +45,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
     case SAVE_ACTIVITY: {
       return {
         ...state,
-        activities: Array.from(payload.activities, ({ name }) => name),
+        continents: [
+          ...new Set(Array.from(payload, ({ continent }) => continent)),
+        ],
+        countries: payload,
+        currentCountries: payload,
+        currentItems: payload.slice(0, state.itemsPerPage),
+        loading: false,
       };
     }
     case FILTER_COUNTRIES: {
@@ -54,6 +63,13 @@ const rootReducer = (state = initialState, { type, payload }) => {
         currentCountries: filtered,
         currentItems: filtered.slice(0, state.itemsPerPage),
         currentPage: 1,
+      };
+    }
+    case SEARCH_COUNTRIES: {
+      let filtered = filterByName(state.countries, payload);
+      return {
+        ...state,
+        searchCountries: filtered,
       };
     }
     case ORDER_COUNTRIES: {

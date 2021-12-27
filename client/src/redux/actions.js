@@ -7,6 +7,7 @@ export const ORDER_COUNTRIES = "order_countries";
 export const FILTER_COUNTRIES = "filter_countries";
 export const SET_ITEMS_PER_PAGE = "set_items_per_page";
 export const SET_PAGE_CURRENT_ITEMS = "set_page_current_items";
+export const SEARCH_COUNTRIES = "search_countries";
 
 export const get_countries = () => async (dispatch) => {
   let response = await axios.get("http://localhost:4000/api/v1/countries");
@@ -14,12 +15,17 @@ export const get_countries = () => async (dispatch) => {
 };
 export const save_activity = (data) => async (dispatch) => {
   console.log("Data enviada:", data);
-  let response = await axios.post(
-    "http://localhost:4000/api/v1/activity",
-    data
-  );
-  console.log("Respuesta:", response);
-  return dispatch({ type: SAVE_ACTIVITY, payload: response.data });
+  await axios
+    .post("http://localhost:4000/api/v1/activity", data)
+    .then(async () => {
+      console.log("entro");
+      var countries = await axios.get("http://localhost:4000/api/v1/countries");
+      console.log("Respuesta:", countries);
+      return dispatch({ type: SAVE_ACTIVITY, payload: countries.data });
+    })
+    .catch((e) => {
+      console.log(e);
+    });
 };
 //export const get_countries = () => {
 //let data = fakeData;
@@ -37,4 +43,7 @@ export const set_items_per_page = (data) => {
 };
 export const set_page_current_items = (data) => {
   return { type: SET_PAGE_CURRENT_ITEMS, payload: data };
+};
+export const search_countries = (data) => {
+  return { type: SEARCH_COUNTRIES, payload: data };
 };
