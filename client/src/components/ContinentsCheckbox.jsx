@@ -26,6 +26,9 @@ const ContinentsCheckbox = () => {
           name="continent"
           value="all"
           id="all"
+          checked={
+            filtering_and_ordering.byContinent.includes("all") ? true : false
+          }
           onChange={(e) => handleCheckbox(e)}
         />
         <label htmlFor="all">All</label>
@@ -38,6 +41,11 @@ const ContinentsCheckbox = () => {
               value={continent}
               id={continent}
               onChange={(e) => handleCheckbox(e)}
+              checked={
+                filtering_and_ordering.byContinent.includes(continent)
+                  ? true
+                  : false
+              }
             />
             <label htmlFor={continent}>{continent}</label>
           </div>
