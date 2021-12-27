@@ -1,9 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
+.mainSelect {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid;
+  background: #fff;
+}
+.darkBtn {
+  background-color: #002448;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+}
+.lightBtn {
+  background-color: #f0f1f5;
+  color: #002448;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #002448;
+  font-size: 14px;
+}
 .container {
-  width: 70%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
+.container form {
+  width: inherit;
+  position: absolute;
+}
+@media screen and (max-width: 768px) {
+  .container form {
+    position: relative;
+  }
 }
 .container form input {
   width: 30vw;
@@ -11,8 +50,12 @@
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
   margin: 1rem 0;
-  border: 1px solid;
-  border-color: #808080;
+  border: none;
+}
+@media screen and (max-width: 768px) {
+  .container form input {
+    width: 100%;
+  }
 }
 .container .search {
   width: 2rem;
@@ -28,5 +71,12 @@
   position: relative;
   right: 2.4rem;
   top: 0.12rem;
+}
+@media screen and (max-width: 768px) {
+  .container .search {
+    position: absolute;
+    right: 0.3rem;
+    top: 1.25rem;
+  }
 }
 /*# sourceMappingURL=search-bar.module.css.map */

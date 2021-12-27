@@ -26,23 +26,46 @@
   font-size: 14px;
 }
 .container {
-  width: 100vw;
-  height: 100vh;
-/* The image used */
-  background-image: url("../assets/welcome-bg.jpg");
-/* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #002448;
+  width: 50vw;
+  gap: 2rem;
 }
-.container .logo {
-  width: 300px;
-  height: 300px;
-  margin-bottom: 3rem;
+.container .groupTwo {
+  width: inherit;
+  display: flex;
+  gap: 1rem;
 }
-/*# sourceMappingURL=welcome.module.css.map */
+.container .group {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.container .group input {
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid;
+  background: #fff;
+}
+.container .group .error {
+  color: #f00;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+}
+.container .season {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.container .countrySearch {
+  width: inherit;
+  display: flex;
+}
+/*# sourceMappingURL=create-activity-form.module.css.map */

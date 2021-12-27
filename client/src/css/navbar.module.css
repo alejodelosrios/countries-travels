@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
+.mainSelect {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid;
+  background: #fff;
+}
+.darkBtn {
+  background-color: #002448;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+}
+.lightBtn {
+  background-color: #f0f1f5;
+  color: #002448;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #002448;
+  font-size: 14px;
+}
+.containerDark {
+  min-height: 100vh;
+  background-color: #e3e7e8;
+  color: #002448;
+  font-family: 'Open Sans', sans-serif;
+}
+@media screen and (min-width: 375px) {
+  .containerDark {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .containerDark {
+    display: block;
+    width: 25%;
+  }
+}
+.containerLight {
+  min-height: 100vh;
+  background-color: #002448;
+  color: #e3e7e8;
+  font-family: 'Open Sans', sans-serif;
+}
+@media screen and (min-width: 375px) {
+  .containerLight {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .containerLight {
+    display: block;
+    width: 25%;
+  }
+}
+.navbar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+.navbar h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+.navbarTwo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 2rem;
+}
+.navbarTwo h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=navbar.module.css.map */

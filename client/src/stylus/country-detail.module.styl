@@ -12,15 +12,6 @@
         width: inherit
         height: inherit
         aside
-            width:15%
-            height: inherit
-            background-color:main-color
-            display: flex
-            flex-direction: column
-            justify-content: space-between
-            align-items: center
-            padding: 2rem 1rem
-            gap: 2rem
             .sidebarTexts
                 width:100%
                 display: flex
@@ -60,10 +51,13 @@
             display: flex
             justify-content: flex-end
             align-items: center
-            //margin-left: auto
-            //margin-right: auto
             padding: 0 5rem
             background-color: base-color
+            @media screen and (min-width: 375px)
+                width: 100%;
+                padding: 0 1rem
+            @media screen and (min-width: 411px)
+                padding: 0 2rem
             .bgImg
                 position: absolute
                 top:0

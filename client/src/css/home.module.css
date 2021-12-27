@@ -1,51 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
-.container {
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-}
-.container aside {
-  width: 15%;
-  height: inherit;
-  background-color: #e3e7e8;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2rem 1rem;
-  gap: 2rem;
-}
-.container aside h3 {
-  color: #002448;
-}
-.container .content {
-  width: 85%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1rem;
-/* The image used */
-  background-image: url("../assets/home-page-bg.png");
-/* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.container .content .orderBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  height: 10vh;
-}
-.container .content .orderBar .itemsPerPage {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-.container .content .orderBar .itemsPerPage select {
+.mainSelect {
   -webkit-appearance: none;
   appearance: none;
   height: 2.5rem;
@@ -55,7 +9,102 @@
   border: 1px solid;
   background: #fff;
 }
-.container .content .credits {
+.darkBtn {
+  background-color: #002448;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+}
+.lightBtn {
+  background-color: #f0f1f5;
+  color: #002448;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #002448;
+  font-size: 14px;
+}
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+.container .content {
+  width: 85%;
+/* The image used */
+  background-image: url("../assets/home-page-bg.png");
+/* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media screen and (min-width: 375px) {
+  .container .content {
+    width: 100%;
+  }
+}
+.container .content .smallContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+@media screen and (min-width: 1280px) {
+  .container .content .smallContainer {
+    max-width: 1024px;
+  }
+}
+@media screen and (min-width: 1536px) {
+  .container .content .smallContainer {
+    max-width: 1280px;
+  }
+}
+.container .content .smallContainer .orderBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+@media screen and (max-width: 768px) {
+  .container .content .smallContainer .orderBar {
+    flex-direction: column;
+  }
+}
+.container .content .smallContainer .orderBar .orderContainer {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .container .content .smallContainer .orderBar .orderContainer {
+    width: 100%;
+  }
+}
+.container .content .smallContainer .orderBar .orderContainer .itemsPerPage {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.container .content .smallContainer .orderBar .orderContainer .itemsPerPage label {
+  margin-right: 0.5rem;
+}
+@media screen and (min-width: 768px) {
+  .container .content .smallContainer .orderBar .orderContainer .itemsPerPage label {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 968px) {
+  .container .content .smallContainer .orderBar .orderContainer .itemsPerPage label {
+    font-size: 14px;
+  }
+}
+.container .content .smallContainer .credits {
   width: 100%;
   display: flex;
   justify-content: flex-end;

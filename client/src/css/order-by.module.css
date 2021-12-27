@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
-.container {
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-}
-.container select {
+.mainSelect {
   -webkit-appearance: none;
   appearance: none;
   height: 2.5rem;
@@ -15,5 +8,39 @@
   margin: 1rem 0;
   border: 1px solid;
   background: #fff;
+}
+.darkBtn {
+  background-color: #002448;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+}
+.lightBtn {
+  background-color: #f0f1f5;
+  color: #002448;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #002448;
+  font-size: 14px;
+}
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.container label {
+  margin-right: 0.5rem;
+}
+@media screen and (min-width: 768px) {
+  .container label {
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 968px) {
+  .container label {
+    font-size: 14px;
+  }
 }
 /*# sourceMappingURL=order-by.module.css.map */

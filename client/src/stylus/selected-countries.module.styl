@@ -1,0 +1,47 @@
+@import "./variables.styl"
+
+.container
+    width: 40%
+    display: flex
+    flex-direction: column
+    padding: 0.5rem
+    p
+        margin-top:0
+        margin-bottom:1rem
+    .selectedCountries
+        display:flex
+        flex-wrap:wrap
+        gap: 0.5rem
+        width:100%
+        overflow-Y: auto
+        background-color: base-color
+        margin:0
+        padding:  0
+        li
+            display:flex
+            list-style-type:none
+            transition: all 0.2s
+            margin:0
+            padding: 0.3rem
+            border-radius: 0.3rem
+            font-size: 10px
+            border: 1px solid main-color
+            &:hover
+                cursor:pointer
+                background-color:main-color
+                color: white
+            span
+                width: 1rem
+                height:1rem
+                border: 1px solid main-color
+                border-radius: 100%
+                padding:0.05rem
+                display: flex
+                justify-content: center
+                align-items:center
+                margin-left: 0.5rem
+                &:hover
+                    cursor:pointer
+                    background-color:main-color
+                    color: white
+                    border-color:white
