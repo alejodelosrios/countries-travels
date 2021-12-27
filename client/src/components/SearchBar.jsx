@@ -27,6 +27,7 @@ const SearchBar = () => {
           type="onSubmit"
           onChange={(e) => handleInputChange(e)}
           placeholder="Enter country name"
+          value={filtering_and_ordering.byName}
         />
         <div className={styles.search}>
           <svg

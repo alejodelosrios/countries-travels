@@ -20,6 +20,7 @@ const OrderBy = () => {
     <div className={styles.container}>
       <label htmlFor="orderBy">Order By:</label>
       <select
+        className={styles.mainSelect}
         id="orderBy"
         onChange={(e) => handleOrderByFilter(e)}
         name="orderBy"
