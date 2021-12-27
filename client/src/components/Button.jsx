@@ -4,7 +4,13 @@ import styles from "../css/button.module.css";
 const Button = (props) => {
   return (
     <>
-      <button className={styles.cta} onClick={props.onClick}>
+      <button
+        className={
+          props.customStyle === "dark" ? styles.darkBtn : styles.lightBtn
+        }
+        onClick={props.onClick}
+        disabled={props.disabled ? props.disables : ""}
+      >
         {props.name}
       </button>
     </>
