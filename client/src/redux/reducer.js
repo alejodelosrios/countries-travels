@@ -10,8 +10,10 @@ import {
 
 import { handleCurrentCountries } from "./services/handleCurrentCountries";
 import { filterByName } from "./services/filterByName";
+import { getActivities } from "./services/getActivities";
 
 const initialState = {
+  activities: [],
   countries: [],
   currentCountries: [],
   searchCountries: [],
@@ -19,6 +21,7 @@ const initialState = {
     byName: "",
     byContinent: "all",
     orderBy: "",
+    byActivity: "",
   },
   currentPage: 1,
   itemsPerPage: 10,
@@ -30,8 +33,10 @@ const initialState = {
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_COUNTRIES: {
+      let activities = getActivities(payload);
       return {
         ...state,
+        activities: activities,
         continents: [
           ...new Set(Array.from(payload, ({ continent }) => continent)),
         ],

@@ -10,6 +10,7 @@ import { set_items_per_page } from "../redux/actions";
 import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
+import ActivitiesSelect from "../components/ActivitiesSelect";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -30,29 +31,32 @@ const Home = () => {
             <main className={styles.content}>
                 <div className={styles.smallContainer}>
                     <TopBar />
-                    <div className={styles.orderBar}>
-                        <SearchBar />
-                        <div className={styles.orderContainer}>
-                            <div className={styles.itemsPerPage}>
-                                <label htmlFor="itemsPerPage">
-                                    Items per page:
-                                </label>
-                                <select
-                                    id="itemsPerPage"
-                                    onChange={(e) => handleItemsPerPage(e)}
-                                    name="itemsPerPage"
-                                    defaultValue={itemsPerPage}
-                                    className={styles.mainSelect}
-                                >
-                                    <option value={5}>5</option>
-                                    <option value={10}>10</option>
-                                    <option value={15}>15</option>
-                                    <option value={20}>20</option>
-                                    <option value={25}>25</option>
-                                </select>
+                    <div className={styles.filterOrderContainer}>
+                        <div className={styles.orderBar}>
+                            <SearchBar />
+                            <div className={styles.orderContainer}>
+                                <div className={styles.itemsPerPage}>
+                                    <label htmlFor="itemsPerPage">
+                                        Items per page:
+                                    </label>
+                                    <select
+                                        id="itemsPerPage"
+                                        onChange={(e) => handleItemsPerPage(e)}
+                                        name="itemsPerPage"
+                                        defaultValue={itemsPerPage}
+                                        className={styles.mainSelect}
+                                    >
+                                        <option value={5}>5</option>
+                                        <option value={10}>10</option>
+                                        <option value={15}>15</option>
+                                        <option value={20}>20</option>
+                                        <option value={25}>25</option>
+                                    </select>
+                                </div>
+                                <OrderBy />
                             </div>
-                            <OrderBy />
                         </div>
+                        <ActivitiesSelect />
                     </div>
                     <Countries />
                     <Pagination category="countries" />
