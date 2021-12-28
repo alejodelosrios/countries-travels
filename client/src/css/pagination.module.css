@@ -5,7 +5,6 @@
   height: 2.5rem;
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
-  margin: 1rem 0;
   border: none;
   background: #fff;
 }
@@ -33,11 +32,36 @@
   width: 100%;
   padding: 2rem 1rem;
 }
-.container input {
-  width: 2.5rem;
-  margin-right: 0.3rem;
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 }
-.container button {
+.container input {
+  width: 3rem;
+  margin-right: 0.3rem;
+  border: 0.6px solid #808080;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+.container input:focus {
+  outline: none;
+}
+.container input+button {
+  background-color: #002448;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.3rem 0.8rem;
+}
+.container .numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+.container .numbers button {
   width: 2rem;
   height: 2rem;
   background-color: transparent;
@@ -51,6 +75,13 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+@media screen and (max-width: 411px) {
+  .container .numbers button {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.3rem;
+  }
 }
 .activeButton {
   border-radius: 100%;

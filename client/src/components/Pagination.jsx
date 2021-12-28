@@ -55,100 +55,102 @@ function Pagination() {
 
   return (
     <nav className={styles.container}>
-      <button
-        value="prev"
-        className={styles.arrowButton}
-        onClick={() => prevPage()}
-      >
-        <img src={Left} alt="left arrow" />
-      </button>
-      {pageNumbers.map((number) => {
-        if (
-          number === 1 ||
-          number === 2 ||
-          number === 3 ||
-          number === pageNumbers.length - 2 ||
-          number === pageNumbers.length - 1 ||
-          number === pageNumbers.length
-        ) {
-          return (
-            <button
-              value={number}
-              className={number === currentPage ? styles.activeButton : ""}
-              key={number}
-              onClick={(e) => changeCurrentPage(e)}
-            >
-              {number}
-            </button>
-          );
-        } else if (
-          number === currentPage &&
-          currentPage >= 5 &&
-          currentPage <= pageNumbers.length - 4
-        ) {
-          return (
-            <div key={number}>
-              <button>...</button>
+      <div className={styles.numbers}>
+        <button
+          value="prev"
+          className={styles.arrowButton}
+          onClick={() => prevPage()}
+        >
+          <img src={Left} alt="left arrow" />
+        </button>
+        {pageNumbers.map((number) => {
+          if (
+            number === 1 ||
+            number === 2 ||
+            number === 3 ||
+            number === pageNumbers.length - 2 ||
+            number === pageNumbers.length - 1 ||
+            number === pageNumbers.length
+          ) {
+            return (
               <button
-                className={number === currentPage ? styles.activeButton : ""}
                 value={number}
+                className={number === currentPage ? styles.activeButton : ""}
+                key={number}
                 onClick={(e) => changeCurrentPage(e)}
               >
                 {number}
               </button>
-              <button>...</button>
-            </div>
-          );
-        } else if (number === currentPage && currentPage === 4) {
-          return (
-            <div key={number}>
-              <button
-                className={number === currentPage ? styles.activeButton : ""}
-                value={number}
-                onClick={(e) => changeCurrentPage(e)}
-              >
-                {number}
-              </button>
-              <button>...</button>
-            </div>
-          );
-        } else if (
-          number === currentPage &&
-          currentPage === pageNumbers.length - 3
-        ) {
-          return (
-            <div key={number}>
-              <button>...</button>
-              <button
-                className={number === currentPage ? styles.activeButton : ""}
-                value={number}
-                onClick={(e) => changeCurrentPage(e)}
-              >
-                {number}
-              </button>
-            </div>
-          );
-        } else if (
-          number === 4 &&
-          (currentPage <= 4 || currentPage >= pageNumbers.length - 2)
-        ) {
-          return (
-            <div key={number}>
-              <button>...</button>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      })}
+            );
+          } else if (
+            number === currentPage &&
+            currentPage >= 5 &&
+            currentPage <= pageNumbers.length - 4
+          ) {
+            return (
+              <div key={number}>
+                <button>...</button>
+                <button
+                  className={number === currentPage ? styles.activeButton : ""}
+                  value={number}
+                  onClick={(e) => changeCurrentPage(e)}
+                >
+                  {number}
+                </button>
+                <button>...</button>
+              </div>
+            );
+          } else if (number === currentPage && currentPage === 4) {
+            return (
+              <div key={number}>
+                <button
+                  className={number === currentPage ? styles.activeButton : ""}
+                  value={number}
+                  onClick={(e) => changeCurrentPage(e)}
+                >
+                  {number}
+                </button>
+                <button>...</button>
+              </div>
+            );
+          } else if (
+            number === currentPage &&
+            currentPage === pageNumbers.length - 3
+          ) {
+            return (
+              <div key={number}>
+                <button>...</button>
+                <button
+                  className={number === currentPage ? styles.activeButton : ""}
+                  value={number}
+                  onClick={(e) => changeCurrentPage(e)}
+                >
+                  {number}
+                </button>
+              </div>
+            );
+          } else if (
+            number === 4 &&
+            (currentPage <= 4 || currentPage >= pageNumbers.length - 2)
+          ) {
+            return (
+              <div key={number}>
+                <button>...</button>
+              </div>
+            );
+          } else {
+            return null;
+          }
+        })}
 
-      <button
-        value="next"
-        className={styles.arrowButton}
-        onClick={() => nextPage()}
-      >
-        <img src={Right} alt="right arrow" />
-      </button>
+        <button
+          value="next"
+          className={styles.arrowButton}
+          onClick={() => nextPage()}
+        >
+          <img src={Right} alt="right arrow" />
+        </button>
+      </div>
       <form onSubmit={(e) => handleGoPage(e)}>
         <input
           type="number"

@@ -7,23 +7,46 @@
     gap:0.3rem
     width: 100%
     padding: 2rem 1rem
+    @media screen and (max-width: 768px)
+        flex-direction:column
+        gap: 0.8rem
     input
-      width: 2.5rem
-      margin-right: 0.3rem
-    button
-      width: 2rem
-      height: 2rem
-      background-color: transparent
-      border: none;
-      color: main-color
-      padding: 0.5rem
-      text-align: center
-      text-decoration: none
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer
+        width: 3rem
+        margin-right: 0.3rem
+        border:0.6px solid gray
+        border-radius: 1rem
+        padding: 0.3rem 0.8rem
+        &:focus
+            outline:none
+    input+button
+        background-color: main-color
+        color: white
+        border:none
+        border-radius: 1rem
+        padding: 0.3rem 0.8rem
+    .numbers
+        display: flex
+        justify-content: center
+        align-items: center
+        gap:0.3rem
+        button
+            width: 2rem
+            height: 2rem
+            background-color: transparent
+            border: none;
+            color: main-color
+            padding: 0.5rem
+            text-align: center
+            text-decoration: none
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer
+            @media screen and (max-width: 411px)
+                width: 1.5rem
+                height: 1.5rem
+                padding: 0.3rem
 
 .activeButton
     border-radius: 100%
