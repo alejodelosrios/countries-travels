@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      fifa: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       flag: {
         type: DataTypes.STRING,
         allowNull: false,

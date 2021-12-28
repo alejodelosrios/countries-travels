@@ -36,6 +36,7 @@ module.exports = {
             response.data.map((country) => {
               let obj = {
                 name: country.name.common,
+                fifa: country.fifa === undefined ? "Undefined" : country.fifa,
                 flag: country.flags.svg,
                 continent: country.region,
                 // Algunos paises no tiene capital definida

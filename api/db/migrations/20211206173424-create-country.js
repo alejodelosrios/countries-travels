@@ -1,48 +1,51 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Countries', {
+    await queryInterface.createTable("Countries", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      fifa: {
+        type: Sequelize.STRING,
       },
       flag: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       continent: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       capital: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       sub_region: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       area: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       population: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Countries');
-  }
+    await queryInterface.dropTable("Countries");
+  },
 };
