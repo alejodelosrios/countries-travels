@@ -6,7 +6,7 @@
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
   margin: 1rem 0;
-  border: 1px solid;
+  border: none;
   background: #fff;
 }
 .darkBtn {
@@ -51,6 +51,9 @@
   padding: 0.2rem 1rem;
   margin: 1rem 0;
   border: none;
+}
+.container form input:focus {
+  outline: none;
 }
 @media screen and (max-width: 768px) {
   .container form input {

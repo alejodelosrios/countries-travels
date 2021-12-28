@@ -6,7 +6,7 @@
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
   margin: 1rem 0;
-  border: 1px solid;
+  border: none;
   background: #fff;
 }
 .darkBtn {
@@ -30,8 +30,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50vw;
+  width: 100%;
   gap: 2rem;
+}
+@media screen and (min-width: 678px) {
+  .container {
+    width: 90%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 80%;
+  }
 }
 .container .groupTwo {
   width: inherit;
@@ -52,6 +62,9 @@
   border: 1px solid;
   background: #fff;
 }
+.container .group input:focus {
+  outline: none;
+}
 .container .group .error {
   color: #f00;
   font-family: 'Open Sans', sans-serif;
@@ -67,5 +80,6 @@
 .container .countrySearch {
   width: inherit;
   display: flex;
+  flex-wrap: wrap;
 }
 /*# sourceMappingURL=create-activity-form.module.css.map */

@@ -12,6 +12,7 @@ import Population from "../assets/population.svg";
 import Area from "../assets/area.svg";
 import Capital from "../assets/capital.svg";
 import Navbar from "./Navbar";
+import TopBar from "./TopBar";
 
 const CountryDetail = () => {
   const { id } = useParams();
@@ -25,6 +26,7 @@ const CountryDetail = () => {
         <Loader />
       ) : countries.length > 0 ? (
         <div className={styles.wrap}>
+          <TopBar />
           <Navbar customStyle="dark" buttonName="Back" buttonRedirect="/home">
             {/* Aquí se utiliza la propiedad children */}
             <div className={styles.sidebarTexts}>
@@ -95,14 +97,18 @@ const CountryDetail = () => {
                   alt="population icon"
                 />
                 <div>
-                  <p className={styles.statTitle}>{country.population}</p>
+                  <p className={styles.statTitle}>
+                    {(country.population / 1000000).toFixed(2)}
+                  </p>
                   <p className={styles.statSubtitle}>million</p>
                 </div>
               </div>
               <div className={styles.item}>
                 <img className={styles.logo} src={Area} alt="area icon" />
                 <div>
-                  <p className={styles.statTitle}>{country.area}</p>
+                  <p className={styles.statTitle}>
+                    {(country.area / 1000000).toFixed(2)}
+                  </p>
                   <p className={styles.statSubtitle}>million</p>
                 </div>
               </div>

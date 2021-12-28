@@ -6,7 +6,7 @@
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
   margin: 1rem 0;
-  border: 1px solid;
+  border: none;
   background: #fff;
 }
 .darkBtn {
@@ -77,7 +77,6 @@
 .container .wrap .content {
   position: relative;
   overflow: hidden;
-  width: 85%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -98,19 +97,19 @@
 .container .wrap .content .bgImg {
   position: absolute;
   top: 0;
-  right: vh;
+  right: 0;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 120vh;
-  height: auto;
+  height: 100%;
 }
 .container .wrap .content .stats {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
+  z-index: 998;
   gap: 1.5rem;
 }
 .container .wrap .content .stats .item {
@@ -119,9 +118,19 @@
   align-items: center;
   width: 350px;
 }
+@media screen and (max-width: 678px) {
+  .container .wrap .content .stats .item {
+    width: 250px;
+  }
+}
 .container .wrap .content .stats .item .logo {
   width: 70px;
   height: auto;
+}
+@media screen and (max-width: 678px) {
+  .container .wrap .content .stats .item .logo {
+    width: 40px;
+  }
 }
 .container .wrap .content .stats .item div {
   display: flex;
@@ -134,9 +143,19 @@
   font-weight: bold;
   margin: 0;
 }
+@media screen and (max-width: 678px) {
+  .container .wrap .content .stats .item div .statTitle {
+    font-size: 1.5rem;
+  }
+}
 .container .wrap .content .stats .item div .statSubtitle {
   font-size: 2rem;
   font-weight: semibold;
   margin: 0;
+}
+@media screen and (max-width: 678px) {
+  .container .wrap .content .stats .item div .statSubtitle {
+    font-size: 1rem;
+  }
 }
 /*# sourceMappingURL=country-detail.module.css.map */

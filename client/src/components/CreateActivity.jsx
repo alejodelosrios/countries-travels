@@ -3,6 +3,7 @@ import styles from "../css/create-activity.module.css";
 import CreateActivityForm from "./CreateActivityForm";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
+import TopBar from "./TopBar";
 
 const CreateActivity = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const CreateActivity = () => {
   useEffect(() => {});
   return (
     <div className={styles.container}>
+      <TopBar />
       <Navbar
         customStyle="dark"
         title="Create Activity"

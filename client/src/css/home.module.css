@@ -6,7 +6,7 @@
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
   margin: 1rem 0;
-  border: 1px solid;
+  border: none;
   background: #fff;
 }
 .darkBtn {
@@ -29,20 +29,21 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
+  margin-top: 7vh;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    margin-top: 0;
+  }
 }
 .container .content {
-  width: 85%;
+  width: 100%;
 /* The image used */
   background-image: url("../assets/home-page-bg.png");
 /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-@media screen and (min-width: 375px) {
-  .container .content {
-    width: 100%;
-  }
 }
 .container .content .smallContainer {
   height: 100%;
@@ -67,7 +68,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding-bottom: 1rem;
 }
 @media screen and (max-width: 768px) {
   .container .content .smallContainer .orderBar {

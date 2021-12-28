@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { set_items_per_page } from "../redux/actions";
 import { useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
+import TopBar from "../components/TopBar";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Home = () => {
             </Navbar>
             <main className={styles.content}>
                 <div className={styles.smallContainer}>
+                    <TopBar />
                     <div className={styles.orderBar}>
                         <SearchBar />
                         <div className={styles.orderContainer}>

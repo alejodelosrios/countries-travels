@@ -1,34 +1,82 @@
 @import "./variables.styl"
 
+.mobileMenuIcon
+        display:flex
+        justify-content:center
+        align-items:center
+        position:fixed
+        bottom: 2rem
+        right: 2rem
+        border:none
+        border-radius: 100%
+        z-index: 1000
+        color: main-color
+        padding: 0.8rem
+        background: white
+        //box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        @media screen and (min-width: 768px)
+                display:none
 .containerDark
+        display:none
+        width:100%
+        height: 100%
         min-height: 100vh
         background-color: secondary-color
         color: main-color
         font-family: 'Open Sans', sans-serif
         // Media querys
-        @media screen and (min-width: 375px)
-                display:none
+        //@media screen and (min-width: 375px)
         //@media screen and (min-width: 640px)
                 //display:none
         @media screen and (min-width: 768px)
                 display:block
-                width: 25%
+                width: 100%
         //@media screen and (min-width: 1024px)
         //@media screen and (min-width: 1280px)
         //@media screen and (min-width: 1536px)
 .containerLight
+        display:none
+        width:100%
+        height: 100%
         min-height: 100vh
         background-color: main-color
         color: secondary-color
         font-family: 'Open Sans', sans-serif
         // Media querys
-        @media screen and (min-width: 375px)
-                display:none
+        //@media screen and (min-width: 375px)
         //@media screen and (min-width: 640px)
                 //display:none
         @media screen and (min-width: 768px)
                 display:block
-                width: 25%
+                width: 100%
+
+.menuClose
+        position:fixed
+        z-index:999
+        padding: 1rem
+        top: 7vh
+        transform: translateX(-100%)
+        background-color:white
+        width: 100vw
+        height:93vh
+        transition: all 0.5s ease
+.menuOpen
+        position:fixed
+        z-index:999
+        padding: 1rem
+        top: 7vh
+        transform: translateX(0)
+        background-color:white
+        width: 100vw
+        height:93vh
+        transition: all 0.5s ease
+        nav
+                display:flex
+                flex-direction: column
+                justify-content:space-between
+                height:100%
+                padding: 5rem 2rem
 .navbar
         width:100%
         height: 100%

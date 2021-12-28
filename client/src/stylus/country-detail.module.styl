@@ -47,7 +47,6 @@
         .content
             position: relative
             overflow: hidden
-            width:85%
             display: flex
             justify-content: flex-end
             align-items: center
@@ -61,27 +60,31 @@
             .bgImg
                 position: absolute
                 top:0
-                right: vh
+                right: 0
                 display: block;
                 margin-left: auto;
                 margin-right: auto;
                 width: 120vh;
-                height:auto ;
+                height:100% ;
             .stats
                 display: flex
                 flex-direction: column
                 justify-content: space-between
                 align-items: center
-                z-index: 1000
+                z-index: 998
                 gap: 1.5rem
                 .item
                     display: flex
                     justify-content: space-between
                     align-items: center
                     width:350px
+                    @media screen and (max-width: 678px)
+                        width: 250px
                     .logo
                         width: 70px
                         height: auto
+                        @media screen and (max-width: 678px)
+                            width: 40px
                     div
                         display:flex
                         flex-direction:column
@@ -91,7 +94,11 @@
                             font-size: 2.5rem
                             font-weight: bold
                             margin:0
+                            @media screen and (max-width: 678px)
+                                font-size: 1.5rem
                         .statSubtitle
                             font-size: 2rem
                             font-weight: semibold
                             margin:0
+                            @media screen and (max-width: 678px)
+                                font-size: 1rem
