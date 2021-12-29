@@ -110,7 +110,7 @@ __Ruta principal__: debe contener
 __Ruta de detalle de país__: debe contener
 
 - [x] Los campos mostrados en la ruta principal para cada país (imagen de la bandera, nombre, código de país de 3 letras y continente)
-- [ ] Código de país de 3 letras (id)
+- [x] Código de país de 3 letras (id)
 - [x] Capital
 - [x] Subregión
 - [x] Área (Mostrarla en km2 o millones de km2)
@@ -171,6 +171,6 @@ __IMPORTANTE__: No está permitido utilizar los filtrados, ordenamientos y pagin
 
 #### Testing
 
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
+- [x] Al menos tener un componente del frontend con sus tests respectivos
 - [ ] Al menos tener una ruta del backend con sus tests respectivos
 - [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
