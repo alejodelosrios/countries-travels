@@ -12,5 +12,13 @@ export const Validate = (prevFormData) => {
   if (prevFormData.duration === "none") {
     errors.duration = "Duration field is required";
   }
+  if (prevFormData.season.length === 0) {
+    errors.season = "You must choose a season for this activity";
+  }
+  if (prevFormData.countriesId.length < 1) {
+    errors.countriesId =
+      "You must choose at least one country where this activity is practiced";
+  }
+
   return errors;
 };

@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { search_countries } from "../redux/actions";
 import styles from "../css/countries-search.module.css";
+import { Validate } from "./validations/CreateActivity";
 
-const CountriesSearch = ({ formData, setFormData }) => {
+const CountriesSearch = ({ formData, setFormData, errors, setErrors }) => {
   const dispatch = useDispatch();
   let searchCountries = useSelector((state) => state.searchCountries);
   let countries = useSelector((state) => state.countries);
@@ -23,6 +24,11 @@ const CountriesSearch = ({ formData, setFormData }) => {
           countriesId: [...prevFormData.countriesId, e.target.value + ""],
         };
       });
+      // Elimino la propiedad countriesId de los errores
+      // ya que  si envio formData este todavía no se ha actualizado y
+      // me muestra el error para el primer pais
+      let newErrors = delete errors.countriesId;
+      setErrors(newErrors);
     }
   };
 

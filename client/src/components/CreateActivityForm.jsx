@@ -23,6 +23,7 @@ const CreateActivityForm = ({ formData, setFormData }) => {
       ...formData,
       season: season,
     });
+    setErrors(Validate(formData));
   };
 
   const handleInputChange = (e) => {
@@ -47,11 +48,19 @@ const CreateActivityForm = ({ formData, setFormData }) => {
       duration: "none",
       season: [],
       countriesId: [],
+      isModalOpen: true,
     });
   };
 
   const disabeledSubmit = useMemo(() => {
-    if (errors.name || errors.difficulty || errors.duration) return true;
+    if (
+      errors.name ||
+      errors.difficulty ||
+      errors.duration ||
+      errors.season ||
+      errors.countriesId
+    )
+      return true;
     return false;
   }, [errors]);
 
@@ -151,10 +160,23 @@ const CreateActivityForm = ({ formData, setFormData }) => {
           />
         </div>
       </div>
-
+      {errors.season && <p className={styles.error}>{errors.season}</p>}
       <div className={styles.countrySearch}>
-        <CountriesSearch formData={formData} setFormData={setFormData} />
-        <SelectedCountries formData={formData} setFormData={setFormData} />
+        <CountriesSearch
+          formData={formData}
+          setFormData={setFormData}
+          errors={errors}
+          setErrors={setErrors}
+        />
+        <SelectedCountries
+          formData={formData}
+          setFormData={setFormData}
+          errors={errors}
+          setErrors={setErrors}
+        />
+        {errors.countriesId && (
+          <p className={styles.error}>{errors.countriesId}</p>
+        )}
       </div>
       <Button customStyle="dark" name="Save" disabled={disabeledSubmit} />
     </form>

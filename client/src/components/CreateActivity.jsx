@@ -12,6 +12,7 @@ const CreateActivity = () => {
     duration: "none",
     season: [],
     countriesId: [],
+    isModalOpen: false,
   });
   useEffect(() => {});
   return (

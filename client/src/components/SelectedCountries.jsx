@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styles from "../css/selected-countries.module.css";
+import { Validate } from "./validations/CreateActivity";
 
-const SelectedCountries = ({ formData, setFormData }) => {
+const SelectedCountries = ({ formData, setFormData, errors, setErrors }) => {
   let countries = useSelector((state) => state.countries);
 
   const removeFromCountries = (id) => {
@@ -14,6 +15,7 @@ const SelectedCountries = ({ formData, setFormData }) => {
         countriesId: newCountries,
       };
     });
+    setErrors(Validate(formData));
   };
 
   return (
