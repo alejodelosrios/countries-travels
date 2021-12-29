@@ -58,8 +58,11 @@ const CreateActivityForm = ({ formData, setFormData }) => {
   return (
     <form onSubmit={(e) => onSubmit(e)} className={styles.container}>
       <div className={styles.group}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name" data-testid="name-label">
+          Name:
+        </label>
         <input
+          data-testid="name-input"
           type="text"
           name="name"
           onChange={(e) => handleInputChange(e)}
