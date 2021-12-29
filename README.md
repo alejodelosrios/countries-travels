@@ -115,7 +115,7 @@ __Ruta de detalle de país__: debe contener
 - [x] Subregión
 - [x] Área (Mostrarla en km2 o millones de km2)
 - [x] Población
-- [x] Actividades turísticas con toda su información asociada
+- [x] Actividades turísticas <mark>con toda su información asociada</mark>
 
 __Ruta de creación de actividad turística__: debe contener
 
@@ -143,7 +143,7 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
 - [x] Actividad Turística con las siguientes propiedades:
   - ID
   - Nombre
-  - Dificultad (Entre 1 y 5)
+  - Dificultad <mark>(Entre 1 y 5)</mark>
   - Duración
   - Temporada (Verano, Otoño, Invierno o Primavera)
 
