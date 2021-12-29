@@ -4,6 +4,7 @@ import CreateActivityForm from "./CreateActivityForm";
 import { useEffect } from "react";
 import Navbar from "./Navbar";
 import TopBar from "./TopBar";
+import Modal from "./Modal";
 
 const CreateActivity = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +28,21 @@ const CreateActivity = () => {
       <main className={styles.content}>
         <CreateActivityForm formData={formData} setFormData={setFormData} />
       </main>
+      {formData.isModalOpen && (
+        <Modal
+          formData={formData}
+          setFormData={setFormData}
+          title="Touristic Activities"
+          message="The activity was successfully created!"
+          buttonName="Close"
+          customStyle="light"
+        />
+      )}
     </div>
   );
 };
 
 export default CreateActivity;
+//{formData.isModalOpen && (
+//<Modal formData={formData} setFormData={setFormData} />
+//)}

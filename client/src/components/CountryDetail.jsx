@@ -9,6 +9,7 @@ import Americas from "../assets/americas.svg";
 import Europe from "../assets/europe.svg";
 import Oceania from "../assets/oceania.svg";
 import Population from "../assets/population.svg";
+import Flag from "../assets/flag.svg";
 import Area from "../assets/area.svg";
 import Capital from "../assets/capital.svg";
 import Navbar from "./Navbar";
@@ -31,14 +32,10 @@ const CountryDetail = () => {
             {/* Aquí se utiliza la propiedad children */}
             <div className={styles.sidebarTexts}>
               <h1>{country.name}</h1>
+              <h2>({country.fifa})</h2>
               <div className={styles.region}>
                 <h3>{country.continent}</h3>
                 <h4>{country.subregion}</h4>
-                <h4>
-                  {country.Activities.length > 0
-                    ? country.Activities[country.Activities.length - 1].name
-                    : null}
-                </h4>
               </div>
             </div>
           </Navbar>
@@ -89,7 +86,50 @@ const CountryDetail = () => {
                 default:
               }
             })()}
+            <div className={styles.activities}>
+              <h1>Touristic Activities</h1>
+              {loading === true ? (
+                <Loader />
+              ) : country.Activities.length > 0 ? (
+                country.Activities.map((activity, index) => (
+                  <div className={styles.activitiesGroup} key={index}>
+                    <div className={styles.item}>
+                      <h4>Activity:</h4>
+                      <p>{activity.name}</p>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>Difficulty:</h4>
+                      <p>{activity.difficulty}</p>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>Duration:</h4>
+                      <p>{activity.duration}</p>
+                    </div>
+                    <div className={styles.item}>
+                      <h4>Seasons:</h4>
+                      <div className={styles.seasons}>
+                        {Object.values(activity.season).map((season, index) => {
+                          return <p key={index}>{season}</p>;
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>There are not touristic activities for this country</p>
+              )}
+            </div>
             <div className={styles.stats}>
+              <div className={styles.item}>
+                <img className={styles.logo} src={Flag} alt="flag icon" />
+                <div>
+                  <img
+                    className={styles.cardImg}
+                    src={country.flag}
+                    alt={country.name}
+                  />
+                </div>
+              </div>
               <div className={styles.item}>
                 <img
                   className={styles.logo}

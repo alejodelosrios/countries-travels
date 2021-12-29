@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { search_countries } from "../redux/actions";
 import styles from "../css/countries-search.module.css";
-import { Validate } from "./validations/CreateActivity";
+import Loader from "../pages/Loader";
 
 const CountriesSearch = ({ formData, setFormData, errors, setErrors }) => {
   const dispatch = useDispatch();
   let searchCountries = useSelector((state) => state.searchCountries);
   let countries = useSelector((state) => state.countries);
+  let loading = useSelector((state) => state.loading);
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
@@ -53,19 +54,21 @@ const CountriesSearch = ({ formData, setFormData, errors, setErrors }) => {
         value={input}
       />
       <ul className={styles.countriesList}>
-        {countriesForSearch.length > 0
-          ? countriesForSearch.map((country) => (
-              <li
-                key={country.id}
-                value={country.id}
-                onClick={(e) => {
-                  handleOnclick(e);
-                }}
-              >
-                {country.name}
-              </li>
-            ))
-          : null}
+        {loading === true ? (
+          <Loader />
+        ) : countriesForSearch.length > 0 ? (
+          countriesForSearch.map((country) => (
+            <li
+              key={country.id}
+              value={country.id}
+              onClick={(e) => {
+                handleOnclick(e);
+              }}
+            >
+              {country.name}
+            </li>
+          ))
+        ) : null}
       </ul>
     </div>
   );

@@ -48,10 +48,12 @@
             position: relative
             overflow: hidden
             display: flex
-            justify-content: flex-end
+            justify-content: space-around
             align-items: center
             padding: 0 5rem
             background-color: base-color
+            gap: 2rem
+            flex-wrap:wrap
             @media screen and (min-width: 375px)
                 width: 100%;
                 padding: 0 1rem
@@ -66,6 +68,44 @@
                 margin-right: auto;
                 width: 120vh;
                 height:100% ;
+            .activities
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: center
+                z-index: 998
+                color: main-color
+                gap: 1.5rem
+                padding: 2rem
+                background-color: rgba(240, 241, 245,0.7)
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                border-radius: 1.5rem
+                h1
+                    font-size:2.5rem
+                .activitiesGroup
+                    width:100%
+                    .item
+                        width:100%
+                        display:flex
+                        align-items:center
+                        font-size: 1rem
+                        h4
+                            margin-top:0
+                            margin-bottom:0
+                            margin-right:1rem
+                        p
+                            margin:0
+                        .seasons
+                            display:flex
+                            align-items:center
+                            justify-content:flex-start
+                            gap:0.5rem
+                            font-size: 12px
+                            p
+                                text-transform: capitalize
+                                padding: 0.1rem 0.6rem
+                                border-radius: 0.5rem
+                                background-color:third-color
             .stats
                 display: flex
                 flex-direction: column
@@ -73,6 +113,10 @@
                 align-items: center
                 z-index: 998
                 gap: 1.5rem
+                padding: 2rem
+                background-color: rgba(240, 241, 245,0.7)
+                box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+                border-radius: 1.5rem
                 .item
                     display: flex
                     justify-content: space-between
@@ -80,6 +124,10 @@
                     width:350px
                     @media screen and (max-width: 678px)
                         width: 250px
+                    .cardImg
+                        width:80px
+                        height:80px
+                        clip-path: circle();
                     .logo
                         width: 70px
                         height: auto
