@@ -27,15 +27,15 @@ app.use((req, res, next) => {
 app.use("/api/v1", router);
 
 //Starting server
-if (process.env.NODE_ENV !== "test") {
-  app.listen(PORT, function () {
-    console.log(`La app ha arrancado en http://localhost:${PORT}`);
+//if (process.env.NODE_ENV !== "test") {
+app.listen(PORT, function () {
+  console.log(`La app ha arrancado en http://localhost:${PORT}`);
 
-    //Database connection
-    sequelize.sync({ force: true, logging: console.log }).then(() => {
-      console.log("Drop and re-sync db.");
-    });
+  //Database connection
+  sequelize.sync({ force: true, logging: console.log }).then(() => {
+    console.log("Drop and re-sync db.");
   });
-}
+});
+//}
 
 module.exports = app;

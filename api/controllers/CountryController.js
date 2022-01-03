@@ -77,7 +77,7 @@ module.exports = {
     const { id } = req.params;
     try {
       let country = await Country.findByPk(id, {
-        attributes: ["name", "flag", "continent"],
+        //attributes: ["name", "flag", "continent"],
         include: {
           model: Activity,
           attributes: ["name", "difficulty", "duration", "season"],
