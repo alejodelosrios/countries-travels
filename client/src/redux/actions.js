@@ -8,10 +8,26 @@ export const FILTER_COUNTRIES = "filter_countries";
 export const SET_ITEMS_PER_PAGE = "set_items_per_page";
 export const SET_PAGE_CURRENT_ITEMS = "set_page_current_items";
 export const SEARCH_COUNTRIES = "search_countries";
+export const GET_COUNTRY_BY_ID = "get_country_by_id";
 
 export const get_countries = () => async (dispatch) => {
-  let response = await axios.get("http://localhost:4000/api/v1/countries");
-  return dispatch({ type: GET_COUNTRIES, payload: response.data });
+  try {
+    let response = await axios.get("http://localhost:4000/api/v1/countries");
+    return dispatch({ type: GET_COUNTRIES, payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getCountryById = (id) => async (dispatch) => {
+  try {
+    let response = await axios.get(
+      `http://localhost:4000/api/v1/countries/${id}`
+    );
+    console.log("Respuesta:", response.data);
+    return dispatch({ type: GET_COUNTRY_BY_ID, payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const save_activity = (data) => async (dispatch) => {
   console.log("Data enviada:", data);

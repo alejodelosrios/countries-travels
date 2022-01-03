@@ -6,6 +6,7 @@ import {
   SET_PAGE_CURRENT_ITEMS,
   SAVE_ACTIVITY,
   SEARCH_COUNTRIES,
+  GET_COUNTRY_BY_ID,
 } from "./actions";
 
 import { handleCurrentCountries } from "./services/handleCurrentCountries";
@@ -14,6 +15,7 @@ import { getActivities } from "./services/getActivities";
 
 const initialState = {
   activities: [],
+  countryById: {},
   countries: [],
   currentCountries: [],
   searchCountries: [],
@@ -45,6 +47,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
         searchCountries: payload,
         currentItems: payload.slice(0, state.itemsPerPage),
         loading: false,
+      };
+    }
+    case GET_COUNTRY_BY_ID: {
+      return {
+        ...state,
+        countryById: payload,
       };
     }
     case SAVE_ACTIVITY: {

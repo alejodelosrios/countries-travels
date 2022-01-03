@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../css/country-detail.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import Loader from "../pages/Loader";
 import Asia from "../assets/asia.svg";
@@ -14,35 +14,40 @@ import Area from "../assets/area.svg";
 import Capital from "../assets/capital.svg";
 import Navbar from "./Navbar";
 import TopBar from "./TopBar";
+import { getCountryById } from "../redux/actions";
 
 const CountryDetail = () => {
   const { id } = useParams();
-  let countries = useSelector((state) => state.countries);
+  //let countries = useSelector((state) => state.countries);
+  let countryById = useSelector((state) => state.countryById);
   let loading = useSelector((state) => state.loading);
-  let country = countries.find((e) => e.id === id);
-
+  //let country = countries.find((e) => e.id === id);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCountryById(id));
+  }, [dispatch, id]);
   return (
     <div className={styles.container}>
       {loading === true ? (
         <Loader />
-      ) : countries.length > 0 ? (
+      ) : countryById.hasOwnProperty("name") ? (
         <div className={styles.wrap}>
           <TopBar />
           <Navbar customStyle="dark" buttonName="Back" buttonRedirect="/home">
             {/* Aquí se utiliza la propiedad children */}
             <div className={styles.sidebarTexts}>
-              <h1>{country.name}</h1>
-              <h2>({country.fifa})</h2>
+              <h1>{countryById.name}</h1>
+              <h2>({countryById.fifa})</h2>
               <div className={styles.region}>
-                <h3>{country.continent}</h3>
-                <h4>{country.subregion}</h4>
+                <h3>{countryById.continent}</h3>
+                <h4>{countryById.subregion}</h4>
               </div>
             </div>
           </Navbar>
           <main className={styles.content}>
             {/* Switch para hacer dinámica la imagen del continente */}
             {(function () {
-              switch (country.continent) {
+              switch (countryById.continent) {
                 case "Americas":
                   return (
                     <img
@@ -90,8 +95,8 @@ const CountryDetail = () => {
               <h1>Touristic Activities</h1>
               {loading === true ? (
                 <Loader />
-              ) : country.Activities.length > 0 ? (
-                country.Activities.map((activity, index) => (
+              ) : countryById.Activities.length > 0 ? (
+                countryById.Activities.map((activity, index) => (
                   <div className={styles.activitiesGroup} key={index}>
                     <div className={styles.item}>
                       <h4>Activity:</h4>
@@ -125,8 +130,8 @@ const CountryDetail = () => {
                 <div>
                   <img
                     className={styles.cardImg}
-                    src={country.flag}
-                    alt={country.name}
+                    src={countryById.flag}
+                    alt={countryById.name}
                   />
                 </div>
               </div>
@@ -138,7 +143,7 @@ const CountryDetail = () => {
                 />
                 <div>
                   <p className={styles.statTitle}>
-                    {(country.population / 1000000).toFixed(2)}
+                    {(countryById.population / 1000000).toFixed(2)}
                   </p>
                   <p className={styles.statSubtitle}>million</p>
                 </div>
@@ -147,7 +152,7 @@ const CountryDetail = () => {
                 <img className={styles.logo} src={Area} alt="area icon" />
                 <div>
                   <p className={styles.statTitle}>
-                    {(country.area / 1000000).toFixed(2)}
+                    {(countryById.area / 1000000).toFixed(2)}
                   </p>
                   <p className={styles.statSubtitle}>million</p>
                 </div>
@@ -155,7 +160,7 @@ const CountryDetail = () => {
               <div className={styles.item}>
                 <img className={styles.logo} src={Capital} alt="capital icon" />
                 <div>
-                  <p className={styles.statTitle}>{country.capital}</p>
+                  <p className={styles.statTitle}>{countryById.capital}</p>
                 </div>
               </div>
             </div>
