@@ -115,7 +115,7 @@ __Ruta de detalle de país__: debe contener
 - [x] Subregión
 - [x] Área (Mostrarla en km2 o millones de km2)
 - [x] Población
-- [x] Actividades turísticas <mark>con toda su información asociada</mark>
+- [x] Actividades turísticas con toda su información asociada
 
 __Ruta de creación de actividad turística__: debe contener
 
