@@ -63,6 +63,7 @@
 }
 .container form input:focus {
   outline: none;
+  border: 1px solid #002448;
 }
 @media screen and (max-width: 768px) {
   .container form input {
