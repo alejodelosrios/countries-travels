@@ -15,11 +15,20 @@ async function getDbCountries() {
 module.exports = {
   index(req, res) {
     // Consulto la BD de paises
+    const { name } = req.query;
     let countries = getDbCountries();
     countries.then((response) => {
       // Si hay datos respondo con ellos
       if (response.length > 0) {
-        return res.json(response);
+        if (name) {
+          let filteredCountries = response.filter(
+            (e) => e.name.toLowerCase().search(name.toLowerCase()) >= 0
+          );
+          return res.json(filteredCountries);
+        } else {
+          console.log("entro");
+          return res.json(response);
+        }
 
         // Caso contrario, hago la petición a la API, los  almaceno en  la  BD y respondo con los datos de la BD
       } else {
@@ -64,7 +73,17 @@ module.exports = {
           // y retornarlos en un json
           .then(async () => {
             let countries = await getDbCountries();
-            return res.json(countries);
+            if (countryName) {
+              let filteredCountries = countries.filter(
+                (e) =>
+                  e.name.toLowerCase().search(countryName.toLowerCase()) >= 0
+              );
+              console.log(filteredCountries.length);
+              return res.json(filteredCountries);
+            } else {
+              console.log("entro");
+              return res.json(countries);
+            }
           })
           .catch((e) => {
             res.json({ error: e });

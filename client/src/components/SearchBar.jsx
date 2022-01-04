@@ -1,21 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../css/search-bar.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { filter_countries } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import { get_country_by_name } from "../redux/actions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  let filtering_and_ordering = useSelector(
-    (state) => state.filtering_and_ordering
-  );
+  const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
     e.preventDefault();
-    let obj = { ...filtering_and_ordering, byName: e.target.value };
-    dispatch(filter_countries(obj));
+    setInput(e.target.value);
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(get_country_by_name(input));
   };
 
   return (
@@ -27,7 +25,7 @@ const SearchBar = () => {
           type="onSubmit"
           onChange={(e) => handleInputChange(e)}
           placeholder="Search country by name"
-          value={filtering_and_ordering.byName}
+          value={input}
         />
         <div className={styles.search}>
           <svg

@@ -7,6 +7,7 @@ import {
   SAVE_ACTIVITY,
   SEARCH_COUNTRIES,
   GET_COUNTRY_BY_ID,
+  GET_COUNTRY_BY_NAME,
 } from "./actions";
 
 import { handleCurrentCountries } from "./services/handleCurrentCountries";
@@ -46,6 +47,25 @@ const rootReducer = (state = initialState, { type, payload }) => {
         currentCountries: payload,
         searchCountries: payload,
         currentItems: payload.slice(0, state.itemsPerPage),
+        loading: false,
+      };
+    }
+    case GET_COUNTRY_BY_NAME: {
+      let filtered = handleCurrentCountries(
+        payload,
+        state.filtering_and_ordering
+      );
+      let activities = getActivities(payload);
+      return {
+        ...state,
+        activities: activities,
+        continents: [
+          ...new Set(Array.from(payload, ({ continent }) => continent)),
+        ],
+        countries: payload,
+        currentCountries: filtered,
+        searchCountries: payload,
+        currentItems: filtered.slice(0, state.itemsPerPage),
         loading: false,
       };
     }

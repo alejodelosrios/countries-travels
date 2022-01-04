@@ -9,11 +9,23 @@ export const SET_ITEMS_PER_PAGE = "set_items_per_page";
 export const SET_PAGE_CURRENT_ITEMS = "set_page_current_items";
 export const SEARCH_COUNTRIES = "search_countries";
 export const GET_COUNTRY_BY_ID = "get_country_by_id";
+export const GET_COUNTRY_BY_NAME = "get_country_by_name";
 
 export const get_countries = () => async (dispatch) => {
   try {
     let response = await axios.get("http://localhost:4000/api/v1/countries");
     return dispatch({ type: GET_COUNTRIES, payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const get_country_by_name = (name) => async (dispatch) => {
+  try {
+    let response = await axios.get(
+      `http://localhost:4000/api/v1/countries?name=${name}`
+    );
+    console.log("Respuesta: ", response.data);
+    return dispatch({ type: GET_COUNTRY_BY_NAME, payload: response.data });
   } catch (error) {
     console.log(error);
   }
