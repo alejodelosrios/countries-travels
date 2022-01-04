@@ -16,6 +16,11 @@
   border: none;
   font-size: 14px;
 }
+.darkBtn:hover {
+  background-color: #f0f1f5;
+  color: #002448;
+  border: 1px solid #002448;
+}
 .lightBtn {
   background-color: #f0f1f5;
   color: #002448;
@@ -23,6 +28,11 @@
   border-radius: 0.5rem;
   border: 1px solid #002448;
   font-size: 14px;
+}
+.lightBtn:hover {
+  background-color: #002448;
+  color: #fff;
+  border: 1px solid #fff;
 }
 .container {
   display: flex;
@@ -62,7 +72,6 @@
   height: 2.5rem;
   border-radius: 1.5rem;
   padding: 0.2rem 1rem;
-  margin: 1rem 0;
   border: none;
   background: #fff;
 }
