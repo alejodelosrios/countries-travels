@@ -67,6 +67,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         searchCountries: payload,
         currentItems: filtered.slice(0, state.itemsPerPage),
         loading: false,
+        currentPage: 1,
       };
     }
     case GET_COUNTRY_BY_ID: {
