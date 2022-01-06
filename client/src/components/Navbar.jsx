@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 const Navbar = (props) => {
     let navigate = useNavigate();
     let itemsPerPage = useSelector((state) => state.itemsPerPage);
-    const [isMobile, setIsMobile] = useState(false);
+    // Variable de estado para controlar la apertura del menú  móvil
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div>
@@ -114,7 +115,7 @@ const Navbar = (props) => {
                     />
                 </nav>
             </aside>
-            <div className={!isMobile ? styles.menuClose : styles.menuOpen}>
+            <div className={!isOpen ? styles.menuClose : styles.menuOpen}>
                 <nav>
                     {props.title && <h1>{props.title}</h1>}
                     {/* En esta posición se ubica lo que enviemos
@@ -130,10 +131,10 @@ const Navbar = (props) => {
                 </nav>
             </div>
             <button
-                onClick={() => setIsMobile(!isMobile)}
+                onClick={() => setIsOpen(!isOpen)}
                 className={styles.mobileMenuIcon}
             >
-                {isMobile ? (
+                {isOpen ? (
                     <svg
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
