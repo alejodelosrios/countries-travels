@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Signika+Negative:wght@400;500;600;700&display=swap");
+.mainSelect {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2.5rem;
+  border-radius: 1.5rem;
+  padding: 0.2rem 1rem;
+  border: none;
+  background: #fff;
+}
+.darkBtn {
+  background-color: #002448;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 14px;
+}
+.darkBtn:hover {
+  background-color: #f0f1f5;
+  color: #002448;
+  border: 1px solid #002448;
+}
+.lightBtn {
+  background-color: #f0f1f5;
+  color: #002448;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #002448;
+  font-size: 14px;
+}
+.lightBtn:hover {
+  background-color: #002448;
+  color: #fff;
+  border: 1px solid #fff;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+/* The image used */
+  background-image: url("../assets/PageNotFound.png");
+/* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  position: absolute;
+  bottom: 6rem;
+}
+.container .content h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+/*# sourceMappingURL=page-not-found.module.css.map */

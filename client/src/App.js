@@ -6,6 +6,7 @@ import CountryDetail from "./components/CountryDetail.jsx";
 import { useDispatch } from "react-redux";
 import { get_countries } from "./redux/actions";
 import CreateActivity from "./components/CreateActivity.jsx";
+import PageNotFound from "./pages/PageNotFound.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route path="/country/:id" element={<CountryDetail />} />
         <Route path="/activities/create" element={<CreateActivity />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
