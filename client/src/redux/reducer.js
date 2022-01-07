@@ -4,33 +4,38 @@ import {
   FILTER_COUNTRIES,
   SET_ITEMS_PER_PAGE,
   SET_PAGE_CURRENT_ITEMS,
-  SAVE_ACTIVITY,
   SEARCH_COUNTRIES,
   GET_COUNTRY_BY_ID,
   GET_COUNTRY_BY_NAME,
+  SET_IS_MODAL_OPEN,
 } from "./actions";
 
 import { handleCurrentCountries } from "./services/handleCurrentCountries";
 import { filterByName } from "./services/filterByName";
 import { getActivities } from "./services/getActivities";
+import { filterByActivity } from "./services/filterByActivity";
+import { order } from "./services/order";
 
 const initialState = {
   activities: [],
   countryById: {},
   countries: [],
+  continents: [],
   currentCountries: [],
   searchCountries: [],
+
   filtering_and_ordering: {
     byName: "",
     byContinent: "all",
     orderBy: "",
     byActivity: "",
   },
+
   currentPage: 1,
   itemsPerPage: 10,
   currentItems: [],
-  continents: [],
   loading: true,
+  isModalOpen: { val: false, msg: "", type: "" },
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -40,6 +45,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         activities: activities,
+        // Guardo todos los continentes en un array sin repeticiones
         continents: [
           ...new Set(Array.from(payload, ({ continent }) => continent)),
         ],
@@ -51,14 +57,28 @@ const rootReducer = (state = initialState, { type, payload }) => {
       };
     }
     case GET_COUNTRY_BY_NAME: {
-      let filtered = handleCurrentCountries(
-        payload,
-        state.filtering_and_ordering
-      );
+      let currentCountries = payload.data;
+
+      // Esta parte la puedo refactorizar llevandola al
+      // handleCurrentCountries
+
+      // Llama al filtro por acitividad turística
+      if (payload.filtering_and_ordering.byActivity.length > 0) {
+        currentCountries = filterByActivity(
+          currentCountries,
+          payload.byActivity
+        );
+      }
+      // Llama al ordenamiento
+      if (payload.filtering_and_ordering.orderBy.length > 0) {
+        currentCountries = order(currentCountries, payload.orderBy);
+      }
+
       return {
         ...state,
-        currentCountries: filtered,
-        currentItems: filtered.slice(0, state.itemsPerPage),
+        filtering_and_ordering: payload.filtering_and_ordering,
+        currentCountries: currentCountries,
+        currentItems: currentCountries.slice(0, state.itemsPerPage),
         currentPage: 1,
       };
     }
@@ -68,16 +88,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
         countryById: payload,
       };
     }
-    case SAVE_ACTIVITY: {
+    case SET_IS_MODAL_OPEN: {
       return {
         ...state,
-        continents: [
-          ...new Set(Array.from(payload, ({ continent }) => continent)),
-        ],
-        countries: payload,
-        currentCountries: payload,
-        currentItems: payload.slice(0, state.itemsPerPage),
-        loading: false,
+        isModalOpen: payload,
       };
     }
     case FILTER_COUNTRIES: {

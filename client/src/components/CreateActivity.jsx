@@ -5,15 +5,16 @@ import { useEffect } from "react";
 import Navbar from "./Navbar";
 import TopBar from "./TopBar";
 import Modal from "./Modal";
+import { useSelector } from "react-redux";
 
 const CreateActivity = () => {
+  const isModalOpen = useSelector((state) => state.isModalOpen);
   const [formData, setFormData] = useState({
     name: "",
     difficulty: "none",
     duration: "none",
     season: [],
     countriesId: [],
-    isModalOpen: false,
   });
   useEffect(() => {});
   return (
@@ -28,13 +29,13 @@ const CreateActivity = () => {
       <main className={styles.content}>
         <CreateActivityForm formData={formData} setFormData={setFormData} />
       </main>
-      {formData.isModalOpen && (
+      {isModalOpen.val && (
         <Modal
           formData={formData}
           setFormData={setFormData}
           title="Touristic Activities"
-          message="The activity was successfully created!"
-          buttonName="Close"
+          message={isModalOpen.msg}
+          buttonName="Add a new activity"
           customStyle="light"
         />
       )}
@@ -43,6 +44,3 @@ const CreateActivity = () => {
 };
 
 export default CreateActivity;
-//{formData.isModalOpen && (
-//<Modal formData={formData} setFormData={setFormData} />
-//)}

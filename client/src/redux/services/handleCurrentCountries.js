@@ -2,14 +2,15 @@
 import { filterByContinent } from "./filterByContinent";
 import { filterByActivity } from "./filterByActivity";
 import { order } from "./order";
+import { filterByName } from "./filterByName";
 
 export const handleCurrentCountries = (countries, payload) => {
     let currentCountries = countries;
 
     // Llama al Filtro por nombre
-    //if (payload.byName.length > 0) {
-    //currentCountries = filterByName(currentCountries, payload.byName);
-    //}
+    if (payload.byName.length > 0) {
+        currentCountries = filterByName(currentCountries, payload.byName);
+    }
     // LLama al Filtro por continente
     if (payload.byContinent.length > 0) {
         currentCountries = filterByContinent(

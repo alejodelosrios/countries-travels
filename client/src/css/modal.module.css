@@ -56,12 +56,21 @@
   line-height: 1.4;
   background: #f0f1f5;
   color: #002448;
-  padding: 2rem 3rem;
+  padding: 2rem;
   border-radius: 1rem;
-  max-width: 600px;
+  max-width: 800px;
   min-width: 300px;
 }
 .modalContent h2 {
   margin: 0;
+}
+.modalContent .errorMsg {
+  color: #f00;
+}
+.modalContent .buttonsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /*# sourceMappingURL=modal.module.css.map */

@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../css/search-bar.module.css";
 import { useDispatch } from "react-redux";
 import { get_country_by_name } from "../redux/actions";
+import { useSelector } from "react-redux";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [input, setInput] = useState("");
+  let filtering_and_ordering = useSelector(
+    (state) => state.filtering_and_ordering
+  );
 
-  const handleInputChange = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-  };
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(get_country_by_name(input));
+    let obj = {
+      ...filtering_and_ordering,
+      byName: e.target.name.value,
+    };
+    dispatch(get_country_by_name(obj));
   };
 
   return (
@@ -23,9 +26,7 @@ const SearchBar = () => {
           autoComplete="off"
           name="name"
           type="onSubmit"
-          onChange={(e) => handleInputChange(e)}
           placeholder="Search country by name"
-          value={input}
         />
         <div className={styles.search}>
           <svg

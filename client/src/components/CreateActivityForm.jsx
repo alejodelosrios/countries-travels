@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import styles from "../css/create-activity-form.module.css";
 import { useDispatch } from "react-redux";
-import { save_activity } from "../redux/actions";
+import { save_activity, setIsModalOpen } from "../redux/actions";
 import { Validate } from "./validations/CreateActivity";
 import Button from "../components/Button";
 import SelectedCountries from "./SelectedCountries";
@@ -12,6 +12,7 @@ const CreateActivityForm = ({ formData, setFormData }) => {
   //console.log(countries);
   const dispatch = useDispatch();
 
+  // Guarda los checkbox seleccionados en el estado local  y  Lanza las validaciones por cada cambio en los input
   const handleCheck = (e) => {
     let season = formData.season;
     if (e.target.checked === true) {
@@ -26,6 +27,7 @@ const CreateActivityForm = ({ formData, setFormData }) => {
     setErrors(Validate(formData));
   };
 
+  // Guarda los campos en el estado local  y  Lanza las validaciones por cada cambio en los input
   const handleInputChange = (e) => {
     var value = e.target.value;
     var name = e.target.name;
@@ -42,16 +44,10 @@ const CreateActivityForm = ({ formData, setFormData }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(save_activity(formData));
-    setFormData({
-      name: "",
-      difficulty: "none",
-      duration: "none",
-      season: [],
-      countriesId: [],
-      isModalOpen: true,
-    });
+    dispatch(setIsModalOpen({ val: true, msg: "", type: "" }));
   };
 
+  // Para desactivar el boton de save cuando aún hay errores  de validación
   const disabeledSubmit = useMemo(() => {
     if (
       errors.name ||
