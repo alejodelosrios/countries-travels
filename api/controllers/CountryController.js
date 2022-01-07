@@ -1,6 +1,7 @@
 const { Activity, Country } = require("../db/models");
 const axios = require("axios");
 
+// Funcion auxiliar para consultar la bd
 async function getDbCountries() {
   let countries = await Country.findAll({
     //attributes: ["id", "name", "flag", "continent"],
@@ -20,13 +21,15 @@ module.exports = {
     countries.then((response) => {
       // Si hay datos respondo con ellos
       if (response.length > 0) {
+        // Si hay query con el nombre del pais quiere decir que el usuario está filtrando
+        // Luego realizo el filtro y devuelvo un array del resultado
         if (name) {
           let filteredCountries = response.filter(
             (e) => e.name.toLowerCase().search(name.toLowerCase()) >= 0
           );
           return res.json(filteredCountries);
         } else {
-          console.log("entro");
+          //De lo contrario entrego todos los paises
           return res.json(response);
         }
 
@@ -70,18 +73,17 @@ module.exports = {
             Country.bulkCreate(apiCountries);
           })
           // Finalmente utilizo nuevamente  mi función auxiliar para traer los paises de la BD
-          // y retornarlos en un json
-          .then(async () => {
-            let countries = await getDbCountries();
-            if (countryName) {
+          // y retornarlos en un json tal como se pide en el readme
+          .then(() => {
+            let countries = getDbCountries();
+            // Si hay query realizo el filtro y devuelvo el resultado
+            if (name) {
               let filteredCountries = countries.filter(
-                (e) =>
-                  e.name.toLowerCase().search(countryName.toLowerCase()) >= 0
+                (e) => e.name.toLowerCase().search(name.toLowerCase()) >= 0
               );
-              console.log(filteredCountries.length);
               return res.json(filteredCountries);
             } else {
-              console.log("entro");
+              // De lo contrario respondo con todos los  paises
               return res.json(countries);
             }
           })
