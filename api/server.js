@@ -32,7 +32,7 @@ if (process.env.NODE_ENV !== "test") {
     console.log(`La app ha arrancado en http://localhost:${PORT}`);
 
     //Database connection
-    sequelize.sync({ force: false, logging: console.log }).then(() => {
+    sequelize.sync({ force: true, logging: console.log }).then(() => {
       console.log("Drop and re-sync db.");
     });
   });
