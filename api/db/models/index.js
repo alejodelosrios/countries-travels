@@ -18,12 +18,12 @@ sequelize = new Sequelize(config.database, config.username, config.password, {
     idle: 10000,
   },
   dialectOptions: {
-    //ssl: {
-    //require: true,
-    //// Ref.: https://github.com/brianc/node-postgres/issues/2009
-    //rejectUnauthorized: false,
-    //},
-    //keepAlive: true,
+    ssl: {
+      require: true,
+      // Ref.: https://github.com/brianc/node-postgres/issues/2009
+      rejectUnauthorized: false,
+    },
+    keepAlive: true,
   },
   ssl: true,
   define: {
