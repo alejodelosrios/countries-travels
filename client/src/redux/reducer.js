@@ -34,6 +34,7 @@ const initialState = {
   currentPage: 1,
   itemsPerPage: 10,
   currentItems: [],
+
   loading: true,
   isModalOpen: { val: false, msg: "", type: "" },
 };

@@ -25,10 +25,12 @@ function Pagination() {
     }
   }
   const dispatch = useDispatch();
+  // Cada botón cambia de página
   const changeCurrentPage = (e) => {
-    //console.log(+e.target.value);
     dispatch(set_page_current_items(+e.target.value));
   };
+
+  // Para el botón de atrás
   const prevPage = () => {
     let number = currentPage - 1;
     if (number < 1) {
@@ -36,6 +38,8 @@ function Pagination() {
     }
     dispatch(set_page_current_items(number));
   };
+
+  // Para el botón de siguiente
   const nextPage = () => {
     let number = currentPage + 1;
     if (number > pageNumbers.length) {
@@ -63,6 +67,7 @@ function Pagination() {
         >
           <img src={Left} alt="left arrow" />
         </button>
+
         {pageNumbers.map((number) => {
           if (
             number === 1 ||
