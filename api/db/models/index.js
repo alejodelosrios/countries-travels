@@ -11,6 +11,21 @@ let sequelize;
 sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: config.dialect,
+  protocol: config.dialect,
+  pool: {
+    max: 3,
+    min: 1,
+    idle: 10000,
+  },
+  dialectOptions: {
+    //ssl: {
+    //require: true,
+    //// Ref.: https://github.com/brianc/node-postgres/issues/2009
+    //rejectUnauthorized: false,
+    //},
+    //keepAlive: true,
+  },
+  ssl: true,
   define: {
     timestamps: false,
     underscored: true,
@@ -47,9 +62,7 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
 
 module.exports = db;
