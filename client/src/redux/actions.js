@@ -13,7 +13,7 @@ export const GET_COUNTRY_BY_NAME = "get_country_by_name";
 
 export const get_countries = () => async (dispatch) => {
   try {
-    let response = await axios.get("http://localhost:4000/api/v1/countries");
+    let response = await axios.get(`/countries`);
     return dispatch({ type: GET_COUNTRIES, payload: response.data });
   } catch (error) {
     console.log(error);
@@ -24,7 +24,7 @@ export const get_country_by_name =
   (filtering_and_ordering) => async (dispatch) => {
     try {
       let { data } = await axios.get(
-        `http://localhost:4000/api/v1/countries?name=${filtering_and_ordering.byName}`
+        `/countries?name=${filtering_and_ordering.byName}`
       );
       console.log("Respuesta: ", data);
       return dispatch({
@@ -38,9 +38,7 @@ export const get_country_by_name =
 
 export const getCountryById = (id) => async (dispatch) => {
   try {
-    let response = await axios.get(
-      `http://localhost:4000/api/v1/countries/${id}`
-    );
+    let response = await axios.get(`/countries/${id}`);
     console.log("Respuesta:", response.data);
     return dispatch({ type: GET_COUNTRY_BY_ID, payload: response.data });
   } catch (error) {
@@ -50,7 +48,7 @@ export const getCountryById = (id) => async (dispatch) => {
 export const save_activity = (data) => async (dispatch) => {
   console.log("Data enviada:", data);
   try {
-    let res = await axios.post("http://localhost:4000/api/v1/activity", data);
+    let res = await axios.post("/activity", data);
 
     // Si la respuesta del servidor es un error
     if (res.data.hasOwnProperty("error")) {
