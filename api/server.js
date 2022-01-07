@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.use("/api/v1", router);
 
 //Starting server
-if (process.env.NODE_ENV !== "test") {
+if (process.env.NODE_ENV === "test") {
   app.listen(PORT, function () {
     console.log(`La app ha arrancado en http://localhost:${PORT}`);
 

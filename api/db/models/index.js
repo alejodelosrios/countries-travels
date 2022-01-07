@@ -5,32 +5,45 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 const config = require("../../config/config.js");
+require("dotenv").config();
 const db = {};
 
 let sequelize;
-sequelize = new Sequelize(config.database, config.username, config.password, {
-  host: config.host,
-  dialect: config.dialect,
-  protocol: config.dialect,
-  pool: {
-    max: 3,
-    min: 1,
-    idle: 10000,
-  },
-  dialectOptions: {
-    ssl: {
-      require: true,
-      // Ref.: https://github.com/brianc/node-postgres/issues/2009
-      rejectUnauthorized: false,
-    },
-    keepAlive: true,
-  },
-  ssl: true,
-  define: {
-    timestamps: false,
-    underscored: true,
-  },
-});
+sequelize =
+  process.env.NODE_ENV === "production"
+    ? new Sequelize({
+        database: config.database,
+        username: config.username,
+        password: config.password,
+        host: config.host,
+        dialect: config.dialect,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+        define: {
+          timestamps: false,
+          underscored: true,
+        },
+      })
+    : new Sequelize(config.database, config.username, config.password, {
+        host: config.host,
+        dialect: config.dialect,
+        define: {
+          timestamps: false,
+          underscored: true,
+        },
+      });
 
 // checks the database connectivity
 sequelize
