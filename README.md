@@ -22,6 +22,13 @@ Some of the app features :
 
 ### Screenshots
 ![Welcome screen](/images/pi-welcome-screen-web.png)
+![Home screen](/images/pi-home-web.png)
+![Spinner](/images/pi-spinner-web.png)
+![Activities Form](/images/pi-activities-form-web.png)
+![Confirmation modal](/images/pi-confirmation-modal-web.png)
+![Home screen](/images/pi-home-web.png)
+
+
 
 
 ## Objetivos del Proyecto
