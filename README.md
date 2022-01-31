@@ -1,12 +1,28 @@
-<p align='left'>
-    <img src='https://static.wixstatic.com/media/85087f_0d84cbeaeb824fca8f7ff18d7c9eaafd~mv2.png/v1/fill/w_160,h_30,al_c,q_85,usm_0.66_1.00_0.01/Logo_completo_Color_1PNG.webp' </img>
-</p>
+# Countries & Travels App - Individual Project
 
-# Individual Project - Henry Countries
+This was my individual project at Henry, and it is a responsive SPA (Single Page Application) using data extracted from an external API and the following technologies:
 
-<p align="left">
-  <img height="200" src="./countries.png" />
-</p>
+Front End:
+- React JS
+- Redux
+- CSS Modules
+- Stylus CSS Preprocessor
+
+Backend: 
+- Node JS
+- Express JS
+- Sequelize ORM (Sequelize-CLI)
+- PostgreSQL
+
+Some of the app features :
+- Ability to filter countries by Continents
+- Search by name or keywords in the Search Bar.
+- Touristic activity creation through a controlled form
+- Show countries details
+
+### Screenshots
+![Welcome screen](/images/pi-welcome-screen-web.png)
+
 
 ## Objetivos del Proyecto
 
